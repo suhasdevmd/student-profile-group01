@@ -1,0 +1,14 @@
+  Report started at: 19-Dec-2012 04:45:44:143 PM
+
+@: 04:45:44:145 PM Thread:main running sql:use carpooling;
+@: 04:45:44:946 PM Thread:main in DBDataStandAlone added new tms conn; total connections:1
+@: 04:45:44:962 PM Thread:main closing a conn; total conn:1
+@: 04:45:44:962 PM Thread:main running sql:DROP TABLE IF EXISTS Employee;
+@: 04:45:45:010 PM Thread:main in DBDataStandAlone added new tms conn; total connections:2
+@: 04:45:45:051 PM Thread:main closing a conn; total conn:2
+@: 04:45:45:052 PM Thread:main running sql:CREATE TABLE  Employee (Employee_id varchar(45) NOT NULL,EmployeeName varchar(45) NOT NULL,EmailId varchar(45) NOT NULL,Password varchar(500),updated_at datetime,created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,PRIMARY KEY (`Employee_id`));
+@: 04:45:45:082 PM Thread:main in DBDataStandAlone added new tms conn; total connections:3
+@: 04:45:45:178 PM Thread:main closing a conn; total conn:3
+@: 04:45:45:179 PM Thread:main running sql:insert into Employee (Employee_id, EmployeeName, EmailId, Password)  values('IC00102', 'Bert Bates', 'bates@tech.com', 'bates123'); 
+@: 04:45:45:211 PM Thread:main in DBDataStandAlone added new tms conn; total connections:4
+@: 04:45:45:239 PM Thread:main closing a conn; total conn:4

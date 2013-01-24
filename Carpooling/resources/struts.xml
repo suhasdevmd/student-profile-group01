@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.custom.i18n.resources" value="ApplicationResources" />
+
+
+
+	<package name="default" extends="struts-default" namespace="/">
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+		<action name="welcomeLink" method="welcome"
+			class="carpooling.action.LinkAction">
+			<result name="welcome" type="tiles">welcomePage</result>
+		</action>
+		<action name="Registered_Users" class="carpooling.action.View_Registered_Users">
+			<result name="success" type="tiles">RegisteredUsers</result>
+		</action>
+
+		<action name="View_Registered_Users" class="carpooling.action.View_Registered_Users">
+			<result name="success" type="tiles">ViewRegisteredUsers</result>
+		</action>
+		<action name="Confirm" class="carpooling.action.Pool_Confirmation">
+			<result name="success" type="tiles">Confirmation</result>
+		</action>
+		<action name="View_feedback" class="carpooling.action.View_Feedback">
+			<result name="success" type="tiles">Viewfeedback</result>
+		</action>
+		<action name="Unregister" class="carpooling.action.UnRegister">
+			<result name="success" type="tiles">UnRegister</result>
+		</action>
+
+		<!-- <action name="Add_Route" class="carpooling.action.Add_Route"> -->
+		<!-- <result name="success" type="tiles">Route_Added</result> -->
+		<!-- </action> -->
+
+		<!-- <action name="admin_welcome" class="carpooling.action.Welcome_admin"> 
+			<result name="success">admin_welcome.jsp</result> </action> -->
+
+
+		<!-- mypart -->
+		<action name="login" class="carpooling.action.Login">
+			<result name="success" type="tiles">welcome</result>
+			<result name="error" type="tiles">Login</result>
+			<result name="redirect" type="tiles">Redirectjsp</result>
+			<result name="showbookedseat" type="tiles">ShowBookedSeat</result>
+			<result name="RegisteredUserPage" type="tiles">RegisteredUserPage
+			</result>
+
+
+			<result name="admin_welcome" type="tiles">adminscreen</result>
+		</action>
+		<action name="modify" class="carpooling.action.Modify">
+			<result name="success" type="tiles">MailWillbeSentMessage</result>
+		</action>
+		<action name="registerSubmit" class="carpooling.action.RegisterForCarpooling">
+			<result name="success" type="tiles">RegistrationSuccess</result>
+			<result name="input" type="tiles">Register</result>
+		</action>
+		  <action name="register" class="carpooling.action.Register" >
+            <result name="success" type="tiles">Register</result>
+        </action>
+         <action name="cancel" class="carpooling.action.CancelSeat">
+        <result name="success" type="tiles">Cancel</result>
+        </action>
+        
+       
+		<action name="welcome" class="carpooling.action.Welcome">
+			<!-- <action name="welcome" class="carpooling.action.CookieSample"> -->
+			<result name="success" type="tiles">BookSeat</result>
+			<result name="error" type="tiles">ErrorMessage</result>
+		</action>
+		<action name="showrequestpage" class="carpooling.action.Showrequestpage">
+			<result name="success" type="tiles">PlaceRequest</result>
+		</action>
+		<action name="placerequest" class="carpooling.action.PlaceRequest">
+			<result name="success" type="tiles">MailWillbeSentMessage</result>
+			<result name="input" type="tiles">PlaceRequest</result>
+			<!--<result name="initial">PlaceRequest.jsp</result> -->
+		</action>
+		<action name="bookseat" class="carpooling.action.BookSeat">
+			<result name="success" type="tiles">MailWillbeSentMessage</result>
+		</action>
+		<action name="logout" class="carpooling.action.Logout">
+			<result name="success" type="tiles">Logout</result>
+		</action>
+		<action name="ModifyCarpoolingDetails" class="carpooling.action.ModifyCarpoolDetails">
+			<result name="success" type="tiles">ModifyCarpoolDetails</result>
+		</action>
+		<action name="poolinfo" method="welcome" class="carpooling.action.LinkAction">
+			<result name="welcome" type="tiles">Information</result>
+		</action>
+		<action name="benifits" method="welcome" class="carpooling.action.LinkAction">
+			<result name="welcome" type="tiles">Benifits</result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,17 @@
+  Report started at: 19-Dec-2012 03:31:15:690 PM
+
+@: 03:31:15:691 PM Thread:main  entered catch in /update() while running sql:insert into Employee (Employee_id, EmployeeName, EmailId, Password)  values('IC00102', 'Bert Bates', 'bates@tech.com', 'bates123'); : @ line # 79
+java.sql.SQLException: Incorrect integer value: 'IC00102' for column 'Employee_id' at row 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1074)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4096)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4028)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2490)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2651)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2728)
+	at com.mysql.jdbc.StatementImpl.executeUpdate(StatementImpl.java:1811)
+	at com.mysql.jdbc.StatementImpl.executeUpdate(StatementImpl.java:1725)
+	at carpooling.util.DB.update(DB.java:381)
+	at carpooling.util.DB.update(DB.java:247)
+	at carpooling.util.DB.runScript(DB.java:478)
+	at carpooling.util.DB.runScript(DB.java:485)
+	at carpooling.util.DB.main(DB.java:36)

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+ 
+<struts>
+    <constant name="struts.enable.DynamicMethodInvocation"
+        value="false" />
+    <constant name="struts.devMode" value="false" />
+    <constant name="struts.custom.i18n.resources"
+        value="ApplicationResources" />
+ 
+    <package name="default" extends="struts-default" namespace="/">
+    
+    <action name="View_Registered_Users" class="carpooling.action.View_Registered_Users">
+            <result name="success">ViewUsers.jsp</result>
+    </action>
+    
+    <action name="Registered_Users" class="carpooling.action.RegisteredUsers">
+            <result name="success">RegisteredUsers.jsp</result>
+    </action>
+     <action name="Confirm" class="carpooling.action.Pool_Confirmation">
+        <result name="success">Confirmation.jsp</result>
+     </action>
+     
+      <action name="View_feedback" class="carpooling.action.View_Feedback">
+        <result name="success">Viewfeedback.jsp</result>
+     </action>
+   
+        
+     <action name="unregister" class="carpooling.action.UnRegister">
+            <result name="success">UnRegister.jsp</result>
+      </action>
+      
+ <action name="modify" class="carpooling.action.Modify">
+ <result name="success">MailWillbeSentMessage.jsp</result>
+ </action>     
+ 
+ 	
+    <!-- mypart -->
+          <action name="login" class="carpooling.action.Login">
+            <result name="success">Welcome.jsp</result>
+            <result name="error">Login.jsp</result>
+            <result name="redirect">Redirectjsp.jsp</result>
+            <result name="showbookedseat">ShowBookedSeat.jsp</result>
+            <result name="RegisteredUserPage">RegisteredUserPage.jsp</result>
+            <result name="admin_welcome">admin_welcome.jsp</result>
+        </action>
+              
+         <action name="register" class="carpooling.action.Register" >
+            <result name="success">Register.jsp</result>
+        </action>
+        
+        <action name="registerSubmit" class="carpooling.action.RegisterForCarpooling" >
+            <result name="success">RegistrationSuccess.jsp</result>
+            <result name="input">Register.jsp</result>
+        </action>
+        
+        <action name="cancel" class="carpooling.action.CancelSeat">
+        <result name="success">Cancel.jsp</result>
+        </action>
+            
+         <action name="welcome" class="carpooling.action.Welcome"> 
+            <result name="success">BookSeat.jsp</result>
+            <result name="error">ErrorMessage.jsp</result>
+         </action>
+         <action name="showrequestpage" class="carpooling.action.Showrequestpage">
+            <result name="success">PlaceRequest.jsp</result>
+          </action>
+          <action name="placerequest" class="carpooling.action.PlaceRequest">
+            <result name="success">MailWillbeSentMessage.jsp</result>
+            <result name="input">PlaceRequest.jsp</result>
+            <!--<result name="initial">PlaceRequest.jsp</result>-->
+         </action>
+         <action name="bookseat" class="carpooling.action.BookSeat">
+            <result name="success">MailWillbeSentMessage.jsp</result>
+        </action>  
+        <action name="logout" class="carpooling.action.Logout">
+            <result name="success">Logout.jsp</result>
+        </action> 
+        <action name="ModifyCarpoolingDetails" class="carpooling.action.ModifyCarpoolDetails">
+        	<result name="success">ModifyCarpoolDetails.jsp</result>
+        </action>             
+      </package>
+</struts>

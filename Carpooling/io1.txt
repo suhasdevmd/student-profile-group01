@@ -1,0 +1,6 @@
+  Report started at: 19-Dec-2012 04:45:44:957 PM
+
+@: 04:45:44:958 PM Thread:main updating 0 rows for sql:use carpooling;:
+@: 04:45:45:050 PM Thread:main updating 0 rows for sql:DROP TABLE IF EXISTS Employee;:
+@: 04:45:45:177 PM Thread:main updating 0 rows for sql:CREATE TABLE  Employee (Employee_id varchar(45) NOT NULL,EmployeeName varchar(45) NOT NULL,EmailId varchar(45) NOT NULL,Password varchar(500),updated_at datetime,created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,PRIMARY KEY (`Employee_id`));:
+@: 04:45:45:238 PM Thread:main updating 1 rows for sql:insert into Employee (Employee_id, EmployeeName, EmailId, Password)  values('IC00102', 'Bert Bates', 'bates@tech.com', 'bates123'); :

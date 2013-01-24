@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ 
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="baseLayout" template="/BaseLayoutTable.jsp">
+		<!-- <put-attribute name="title" value="" /> -->
+		<put-attribute name="header" value="CAR POOLING @ TECHMAGNA" />
+		<put-attribute name="logo" value="/Header.jsp" />
+		<put-attribute name="header2" value="For a better environment" />
+		<put-attribute name="info" value="/info.jsp" />
+		<put-attribute name="content" value="" />
+		<put-attribute name="footer" value="/Footer.jsp" />
+	</definition>
+	<definition name="welcomePage" extends="baseLayout">
+		<put-attribute name="content" value="/Login.jsp" />
+	</definition>
+	<definition name="ViewRegisteredUsers" extends="baseLayout">
+		<put-attribute name="content" value="/ViewUsers.jsp" />
+	</definition>
+	
+	<definition name="RegisteredUsers" extends="baseLayout">
+		<put-attribute name="content" value="/RegisteredUsers.jsp" />
+	</definition>
+	<definition name="adminscreen" extends="baseLayout">
+		<put-attribute name="content" value="/admin_welcome.jsp" />
+	</definition>
+	<definition name="welcome" extends="baseLayout">
+		<put-attribute name="content" value="/Welcome.jsp" />
+	</definition>
+	<definition name="Login" extends="baseLayout">
+		<put-attribute name="content" value="/Login.jsp" />
+	</definition>
+	<definition name="Redirectjsp" extends="baseLayout">
+		<put-attribute name="content" value="/Redirectjsp.jsp" />
+	</definition>
+	<definition name="ShowBookedSeat" extends="baseLayout">
+		<put-attribute name="content" value="/ShowBookedSeat.jsp" />
+	</definition>
+	<definition name="RegisteredUserPage" extends="baseLayout">
+		<put-attribute name="content" value="/RegisteredUserPage.jsp" />
+	</definition>
+
+	<definition name="Confirmation" extends="baseLayout">
+		<put-attribute name="content" value="/Confirmation.jsp" />
+	</definition>
+	<!-- <definition name="Route_Added" extends="baseLayout"> -->
+	<!-- <put-attribute name="content" value="/Route_Added.jsp" /> -->
+	<!-- </definition> -->
+
+	<definition name="Viewfeedback" extends="baseLayout">
+		<put-attribute name="content" value="/Viewfeedback.jsp" />
+	</definition>
+
+
+	<definition name="UnRegister" extends="baseLayout">
+		<put-attribute name="content" value="/UnRegister.jsp" />
+	</definition>
+	<definition name="RegistrationSuccess" extends="baseLayout">
+		<put-attribute name="content" value="/RegistrationSuccess.jsp" />
+	</definition>
+	<definition name="Register" extends="baseLayout">
+		<put-attribute name="content" value="/Register.jsp" />
+	</definition>
+
+	<definition name="Cancel" extends="baseLayout">
+		<put-attribute name="content" value="/Cancel.jsp" />
+	</definition>
+	<definition name="BookSeat" extends="baseLayout">
+		<put-attribute name="content" value="/BookSeat.jsp" />
+	</definition>
+	<definition name="ErrorMessage" extends="baseLayout">
+		<put-attribute name="content" value="/ErrorMessage.jsp" />
+	</definition>
+	<definition name="PlaceRequest" extends="baseLayout">
+		<put-attribute name="content" value="/PlaceRequest.jsp" />
+	</definition>
+
+	<definition name="MailWillbeSentMessage" extends="baseLayout">
+		<put-attribute name="content" value="/MailWillbeSentMessage.jsp" />
+	</definition>
+
+	<definition name="Logout" extends="baseLayout">
+		<put-attribute name="content" value="/Logout.jsp" />
+	</definition>
+	<definition name="ModifyCarpoolDetails" extends="baseLayout">
+		<put-attribute name="content" value="/ModifyCarpoolDetails.jsp" />
+	</definition>
+
+	<definition name="Information" extends="baseLayout">
+		<put-attribute name="content" value="/poolinfo.jsp" />
+	</definition>
+	<definition name="Benifits" extends="baseLayout">
+		<put-attribute name="content" value="/benifits.jsp" />
+	</definition>
+
+</tiles-definitions>
