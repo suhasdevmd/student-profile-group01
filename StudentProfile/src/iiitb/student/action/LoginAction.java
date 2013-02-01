@@ -16,7 +16,7 @@ public class LoginAction extends ActionSupport{
 		
 		if (this.username.equals("suhas")
 				&& this.password.equals("suhas")) {
-			return "success";
+			return "subject";
 		} else {
 			addActionError(getText("error.login"));
 			return "error";

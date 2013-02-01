@@ -19,6 +19,7 @@
 		<action name="login" method="execute"
 			class="iiitb.student.action.LoginAction">
 			<result name="success" type="tiles">/welcome.tiles</result>
+			<result name="subject" type="tiles">/subjects.tiles</result>
 			<result name="error" type="tiles">/error.tiles</result>
 		</action>
  
