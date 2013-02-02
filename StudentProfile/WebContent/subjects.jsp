@@ -9,34 +9,53 @@
 </head>
 <body>
 
-	<s:select label="courses" name="courses" headerKey="-1"
+	<%-- <s:select label="courses" name="courses" headerKey="-1"
 		headerValue="Show Enrolled Courses/Show All"
 		list="#{'01':'Enrolled Courses', '02':'Show All'}" value="selectedCourse"
 		required="true" />
+	 --%>
 
 
-	<table border="1">
-	<tr>
-	<th>Subject Code</th>
-	<th>Subject</th>
-	<th>Faculty Name</th>
-	<th>Semester</th>
-	<th>Enrolled</th>
-	<th>Grade</th>
-	</tr>
-	
-	<tr>
-	<td>SE110</td>
-	<td>OOAD</td>
-	<td>KVD</td>
-	<td>2</td>
-	<td>Y</td>
-	<td>A-</td>
-	</tr>
-	
-	
-	</table>
+	<s:select label="courses" name="courses" headerKey="-1"
+		headerValue="Show Enrolled Courses/Show All"
+		list="#{'01':'Enrolled Courses', '02':'Show All'}"
+		value="selectedCourse" required="true" />
 
+
+
+	<s:if test="subject != null">
+
+		<table border="1">
+			<tr>
+				<th>Subject Code</th>
+				<th>Subject</th>
+				<th>Faculty Name</th>
+				<th>Semester</th>
+				<th>Enrolled</th>
+				<th>Grade</th>
+			</tr>
+
+			<s:iterator value="subject">
+				<tr>
+					<td align="center"><s:property value="subjectCode" />
+					</td>
+					<td align="center"><s:property value="subject" />
+					</td>
+					<td align="center"><s:property value="facultyName" />
+					</td>
+					<td align="center"><s:property value="semester" />
+					</td>
+					<td align="center"><s:property value="enrolStatus" />
+					</td>
+					<td align="center"><s:property value="grade" />
+					</td>
+				</tr>
+			</s:iterator>
+		</table>
+	</s:if>
+	<s:else>
+    	No data to display
+	</s:else>
 
 
 </body>

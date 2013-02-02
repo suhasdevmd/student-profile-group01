@@ -24,10 +24,10 @@
  
 #content {
   display:inline;
-  float:left;
+  float:right;
   font-size:100%;
   line-height:1.6em;
-  width:965px;
+  width:785px;
   padding:5px;
   text-align:left;
   border:1px solid blue;
@@ -37,13 +37,14 @@
 }
 #sidebar {
   display:inline;
-  float:right;
+  float:left;
   line-height:1.5em;
-  margin:15px;
   padding:5px;
-  width:300px;
+  width:170px;
   border:1px solid blue;
   min-height: 500px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
  
 #footer {
@@ -51,7 +52,7 @@
   background-position:50% 100%;
   background-repeat:repeat no-repeat;
   clear:both;
-  height:60px;
+  height:100px;
   margin-bottom:0;
   margin-left:auto;
   margin-right:auto;

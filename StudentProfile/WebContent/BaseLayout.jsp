@@ -15,9 +15,9 @@
 			<tiles:insertAttribute name="header" />
 		</div>
 		
-		<%-- <div id="sidebar">
+		<div id="sidebar">
 			<tiles:insertAttribute name="menu" />
-		</div> --%>
+		</div>
 		
 		<div id="content">
 			<tiles:insertAttribute name="body" />

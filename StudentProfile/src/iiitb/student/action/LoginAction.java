@@ -1,5 +1,10 @@
 package iiitb.student.action;
 
+import iiitb.student.model.Subjects;
+import iiitb.student.service.SubjectService;
+
+import java.util.ArrayList;
+
 import com.opensymphony.xwork2.ActionSupport;
 
 @SuppressWarnings("serial")
@@ -8,7 +13,10 @@ public class LoginAction extends ActionSupport{
 	
 	private String username;
 	private String password;
- 
+	ArrayList<Subjects> subject=new ArrayList<Subjects>();
+	SubjectService ss=new SubjectService();
+	
+	
 	public String execute() {
  
 		
@@ -16,6 +24,15 @@ public class LoginAction extends ActionSupport{
 		
 		if (this.username.equals("suhas")
 				&& this.password.equals("suhas")) {
+			
+			
+			subject=ss.getSubjects();
+			
+			
+			if(subject.size()==0){
+				System.out.println("Empty");
+			}
+			
 			return "subject";
 		} else {
 			addActionError(getText("error.login"));
@@ -41,6 +58,14 @@ public class LoginAction extends ActionSupport{
  
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public ArrayList<Subjects> getSubject() {
+		return subject;
+	}
+
+	public void setSubject(ArrayList<Subjects> subject) {
+		this.subject = subject;
 	}
 
 }

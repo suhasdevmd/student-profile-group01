@@ -19,13 +19,17 @@ public class SubjectService {
 		
 		try {
 			con=DB.getConnection();
-			query="select s.subjectCode,s.subjectName,f.firstName,f.lastName,e.semester,e.enrolStatus,e.grade "+
-			"from subjectdetails s,subjectenrollment e,facultydetails f,enrollmentrules r where s.subjectID=e.subjectID"+
-			" and r.subjectID=e.subjectID and r.facultyID=f.faultyID;";
+			query="select s.subjectCode,s.subjectName,f.firstName,f.lastName,e.semester,e.status,e.grade from "+
+			"subjectdetails s,subjectenrollment e,facultydetails f,enrollmentrules r where s.subjectID=e.subjectID "+
+			"and r.subjectID=e.subjectID and r.facultyID=f.facultyID;";
+			
+			
+			System.out.println(query);
+			
 			rs=DB.readFromDB(query, con);
 			
 			while(rs.next()){
-				//System.out.println("-- > > > "+rs.getString("project_name"));
+				System.out.println("inside -- > ");
 				Subjects subj=new Subjects();
 				subj.setSubjectCode(rs.getInt("subjectCode"));
 				subj.setSubject(rs.getString("subjectName"));
@@ -34,6 +38,8 @@ public class SubjectService {
 				subj.setEnrolStatus(rs.getString("enrolStatus"));
 				subj.setGrade(rs.getString("grade"));
 				
+				
+				System.out.println(subj.getSubject());
 				
 				subjects.add(subj);
 			}
