@@ -27,5 +27,10 @@
 			class="iiitb.student.action.LoginAction">
 			<result name="logout">/Login.jsp</result>
 		</action>
+		
+		<action name="friends" method="execute" 
+			class="iiitb.student.action.FriendsAction">
+			<result name="success" type="tiles">/myfriends.tiles</result>
+		</action>
 	</package>
 </struts>

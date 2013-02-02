@@ -5,6 +5,8 @@ public class FriendDetails {
 	private int friendID;
 	private int userID;
 	private int friendUserID;
+	private String friendName;
+	private String friendPhoto;
 	
 	
 	
@@ -25,6 +27,18 @@ public class FriendDetails {
 	}
 	public void setFriendUserID(int friendUserID) {
 		this.friendUserID = friendUserID;
+	}
+	public String getFriendName() {
+		return friendName;
+	}
+	public void setFriendName(String friendName) {
+		this.friendName = friendName;
+	}
+	public String getFriendPhoto() {
+		return friendPhoto;
+	}
+	public void setFriendPhoto(String friendPhoto) {
+		this.friendPhoto = friendPhoto;
 	}
 	
 	

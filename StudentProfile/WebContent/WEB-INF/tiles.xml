@@ -15,6 +15,10 @@
 		<put-attribute name="title" value="Welcome page" />
 		<put-attribute name="body" value="/Welcome.jsp" />
 	</definition>
+	<definition name="/myfriends.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Welcome" />
+		<put-attribute name="body" value="/MyFriends.jsp" />
+	</definition>
 	<definition name="/error.tiles" extends="baseLayout">
 		<put-attribute name="title" value="Error page" />
 		<put-attribute name="body" value="/Error.jsp" />
