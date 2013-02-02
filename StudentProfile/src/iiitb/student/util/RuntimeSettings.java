@@ -4,7 +4,7 @@ public class RuntimeSettings {
 	public static final String APPLICATION_NAME = "studentProfileSystem";
 	public static final String VERSION_ID = " version 0.1" + " dated Feb 2, 2013";
 	public static final String SERVER_IP = "localhost";
-	static String databaseName = "timesheet";
+	static String databaseName = "studentProfileSystem";
 	static String dbUserID = "root";
 	static String dbPassword = "password";
 	public static String RUN_MODE = "Test"; 
