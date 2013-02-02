@@ -50,6 +50,18 @@
 					<td align="center"><s:property value="grade" />
 					</td>
 				</tr>
+
+				<tr>
+					<td>
+						<%-- <s:url id="subjct" namespace="/" action="logout">
+							
+						</s:url> <s:a errorText="Sorry your request had an error."
+							href="%{subjct}">
+						Logout
+					</s:a> --%> <s:url var="Sub" action="syllabus">
+							<s:param name="Subj" value="{subjectCode}"></s:param>
+						</s:url> <s:a href="%{#Sub}"><s:property value="subjectCode"/></s:a></td>
+				</tr>
 			</s:iterator>
 		</table>
 	</s:if>

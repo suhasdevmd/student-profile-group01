@@ -15,9 +15,7 @@ public class SubjectAction extends ActionSupport{
 	
 	
 	public String execute(){
-		
-		
-		
+
 		subject=ss.getSubjects();
 		return SUCCESS;
 	}

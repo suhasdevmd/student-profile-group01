@@ -2,7 +2,7 @@ package iiitb.student.model;
 
 public class Subjects {
 
-	private int subjectCode;
+	private String subjectCode;
 	private String subject;
 	private String facultyName;
 	private int semester;
@@ -10,10 +10,10 @@ public class Subjects {
 	private String grade;
 	
 	
-	public int getSubjectCode() {
+	public String getSubjectCode() {
 		return subjectCode;
 	}
-	public void setSubjectCode(int subjectCode) {
+	public void setSubjectCode(String subjectCode) {
 		this.subjectCode = subjectCode;
 	}
 	public String getSubject() {

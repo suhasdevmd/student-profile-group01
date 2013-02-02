@@ -30,16 +30,20 @@ public class SubjectService {
 			
 			while(rs.next()){
 				System.out.println("inside -- > ");
+				
 				Subjects subj=new Subjects();
-				subj.setSubjectCode(rs.getInt("subjectCode"));
+				
+				System.out.println(" ------------> "+rs.getString("subjectCode"));
+				
+				subj.setSubjectCode(rs.getString("subjectCode"));
 				subj.setSubject(rs.getString("subjectName"));
 				subj.setFacultyName(rs.getString("firstName")+rs.getString("lastName"));
 				subj.setSemester(rs.getInt("semester"));
-				subj.setEnrolStatus(rs.getString("enrolStatus"));
+				subj.setEnrolStatus(rs.getString("status"));
 				subj.setGrade(rs.getString("grade"));
 				
 				
-				System.out.println(subj.getSubject());
+				System.out.println(" --> "+subj.getSubject());
 				
 				subjects.add(subj);
 			}
