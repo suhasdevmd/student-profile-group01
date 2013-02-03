@@ -17,6 +17,11 @@ public class SubjectAction extends ActionSupport{
 	public String execute(){
 
 		subject=ss.getSubjects();
+		if (subject.size() == 0) {
+			System.out.println("Empty");
+		}
+		else
+			System.out.println(subject.size());
 		return SUCCESS;
 	}
 	

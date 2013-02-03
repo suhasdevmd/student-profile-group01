@@ -12,6 +12,11 @@
 	<h2 align="center">welcome , <s:property value="username" />!</h2>
 	
 	<h3 align="center">Student Profile Project</h3>
+	<form action="">
+	<s:submit value="Friends" name="Friends" action="friends"/>
+	<s:submit value="Subjects" name="Subjects" action="subjects"/>
+	<s:submit value="Grades" name="Grades" action="headergrades"/>
+	</form>
 	<p></p><br/><br/><br/>
 	<h2 align="center">Content goes here.</h2>
 </body>

@@ -47,8 +47,8 @@ public class SubjectService {
 				
 				subjects.add(subj);
 			}
-			
-			
+			//close the connection
+			con.close();
 		}catch (Exception e) {
 			// TODO: handle exception
 		}

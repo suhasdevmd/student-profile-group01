@@ -15,7 +15,7 @@
 	</p> --%>
 
 	<img alt="photo" src="images/student.jpg">
-	<h5>Name : Suhas Dev MD</h5>
+	<h5>Name: <s:property value="%{#session.userName}" /> </h5>
 	<h5>Roll No : MT2012142</h5>
 	<h5>Stream : SE</h5>
 

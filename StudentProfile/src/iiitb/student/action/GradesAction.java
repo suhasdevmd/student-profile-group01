@@ -148,11 +148,8 @@ public class GradesAction extends ActionSupport {
 		sem4subjectlist = new ArrayList<String>();
 		sem4subjectlist = (ArrayList<String>) session.get("Sem4Subjectlist");
 		
-		/*
-		 * userID has been hard coded
-		 * has to be changed later 
-		 * */
-		int userID = 4;
+
+		int userID = Integer.parseInt(session.get("userID").toString());
 		if(!sem1subject.equalsIgnoreCase("-1") && sem2subject.equalsIgnoreCase("-1") && sem3subject.equalsIgnoreCase("-1") && sem4subject.equalsIgnoreCase("-1")){
 			System.out.println("1");
 			gradesList = GradesService.getGradesOfSpecificSemesterAndSubject(sem, sem1subject, userID);

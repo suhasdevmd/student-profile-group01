@@ -5,7 +5,7 @@
  
 <struts>
 	<constant name="struts.enable.DynamicMethodInvocation"
-		value="false" />
+		value="true" />
 	<constant name="struts.devMode" value="false" />
 	<constant name="struts.custom.i18n.resources"
 		value="ApplicationResources" />
@@ -26,6 +26,21 @@
 		<action name="logout" method="logout" 
 			class="iiitb.student.action.LoginAction">
 			<result name="logout">/Login.jsp</result>
+		</action>
+		
+		<action name="subjects" method="execute" 
+			class="iiitb.student.action.SubjectAction">
+			<result name="success" type="tiles">/subjects.tiles</result>
+		</action>
+		
+		<action name="headergrades" method="execute"
+			class="iiitb.student.action.HeaderAction">
+			<result name="Grades" type="tiles">/headergrades.tiles</result>
+		</action>
+		
+		<action name="grades" method="execute"
+			class="iiitb.student.action.GradesAction">
+			<result name="success" type="tiles">/headergrades.tiles</result>
 		</action>
 		
 		<action name="friends" method="execute" 

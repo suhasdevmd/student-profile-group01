@@ -12,8 +12,15 @@ public class LoginDetails {
 	private Timestamp lastLoginDTS;
 	private int userID;
 	
-	
-	
+	public String toString() {
+		return "Login ID : " + loginID + "\n" +
+			    "Username :" + userName + "\n" +
+				"Password : " + password + "\n" +
+			    "Secret question : " + secretQuestion + "\n" +
+				"Secret answer : " + secretAnswer + "\n" +
+			    "Last login time : " + lastLoginDTS + "\n" +
+				"User ID :" + userID;
+	}
 	
 	public int getLoginID() {
 		return loginID;

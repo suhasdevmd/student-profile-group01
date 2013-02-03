@@ -60,14 +60,14 @@ public class HeaderAction extends ActionSupport{
 	public String execute(){
 		String val="";
 		Map session=ActionContext.getContext().getSession();
-		
+		function="Grades";
 		if(function.equalsIgnoreCase("Grades")){
 			
 			/*
 			 * the value of userID is hardcoded
 			 * has to be changed later 
 			 */
-			int userID=4;
+			int userID=Integer.parseInt(session.get("userID").toString());
 			
 			sem1subjectlist = new ArrayList<String>();
 			sem1subjectlist = GradesService.getSem1Subjects("",userID);

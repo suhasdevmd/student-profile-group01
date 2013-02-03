@@ -23,7 +23,7 @@
 
 
 
-	<s:if test="subject != null">
+	<s:if test="%{#subject!='null'}">
 
 		<table border="1">
 			<tr>
@@ -50,8 +50,7 @@
 					<td align="center"><s:property value="grade" />
 					</td>
 				</tr>
-
-				<tr>
+<!-- 				<tr>
 					<td>
 						<%-- <s:url id="subjct" namespace="/" action="logout">
 							
@@ -62,10 +61,12 @@
 							<s:param name="Subj" value="{subjectCode}"></s:param>
 						</s:url> <s:a href="%{#Sub}"><s:property value="subjectCode"/></s:a></td>
 				</tr>
+							-->
 			</s:iterator>
 		</table>
 	</s:if>
 	<s:else>
+		<s:property value="subject"/>
     	No data to display
 	</s:else>
 
