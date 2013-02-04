@@ -28,14 +28,21 @@
 			<result name="logout">/Login.jsp</result>
 		</action>
 		
-		<action name="subjects" method="execute" 
+		<action name="subject" method="execute" 
 			class="iiitb.student.action.SubjectAction">
 			<result name="success" type="tiles">/subjects.tiles</result>
 		</action>
 		
+		
 		<action name="headergrades" method="execute"
 			class="iiitb.student.action.HeaderAction">
 			<result name="Grades" type="tiles">/headergrades.tiles</result>
+		</action>
+		
+		<action name="search" method="execute"
+			class="iiitb.student.action.SearchAction">
+			<result name="success" type="tiles">/welcome.tiles</result>
+			<result name="error" type="tiles">/error.tiles</result>
 		</action>
 		
 		<action name="grades" method="execute"

@@ -10,11 +10,13 @@
 </head>
 <body>
 	<h2 align="center">welcome , <s:property value="username" />!</h2>
-	
+	<s:actionmessage/>
 	<h3 align="center">Student Profile Project</h3>
 	<form action="">
 	<s:submit value="Friends" name="Friends" action="friends"/>
-	<s:submit value="Subjects" name="Subjects" action="subjects"/>
+	<s:submit value="Subjects" name="Subjects" action="subject"/>
+	<s:textfield id="rollNumber" name="rollNumber"  /> 
+	<s:submit value="Search" name="Search" action="search"/>
 	<s:submit value="Grades" name="Grades" action="headergrades"/>
 	</form>
 	<p></p><br/><br/><br/>

@@ -5,8 +5,8 @@ import com.opensymphony.xwork2.ActionSupport;
 import iiitb.student.model.PersonalInformation;
 import iiitb.student.service.SearchService;
 
-public class SearchAction extends ActionSupport{
-	
+public class SearchAction extends ActionSupport {
+
 	private int userID;
 	private String firstName;
 	private String middleName;
@@ -16,21 +16,24 @@ public class SearchAction extends ActionSupport{
 	private String permanentAddress;
 	private String photograph;
 	private String rollNumber;
-	
+
 	public String execute() {
 		PersonalInformation friend = new PersonalInformation();
-       
-		friend = SearchService.getFriend("where rollNumber=" + rollNumber);
-		if(friend == null) {
+		System.out.println(this.getRollNumber());
+		friend = SearchService.getFriend("where rollNumber='"
+				+ this.getRollNumber()+"'");
+		if (friend == null) {
 			addActionError(getText("Invalid RollNumber"));
 			return "error";
 		}
-			
+
 		firstName = friend.getFirstName();
 		middleName = friend.getMiddleName();
 		lastName = friend.getLastName();
 		dateOfBirth = friend.getDateOfBirth();
 		photograph = friend.getPhotograph();
+		addActionMessage(getText("Search Successful, friends name is : "
+				+ firstName));
 		return "success";
 	}
 
@@ -105,7 +108,5 @@ public class SearchAction extends ActionSupport{
 	public void setRollNumber(String rollNumber) {
 		this.rollNumber = rollNumber;
 	}
-
-	
 
 }

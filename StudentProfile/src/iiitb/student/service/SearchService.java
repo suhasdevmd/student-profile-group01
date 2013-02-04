@@ -13,6 +13,7 @@ public class SearchService {
 		ResultSet resultSet = null;
 		String query= "select * from personalinformation "+selectionModifier;
 
+		System.out.println("Search query =" +query);
 		Connection connection = DB.getConnection();
 		resultSet = DB.readFromDB(query, connection);
 		try {
