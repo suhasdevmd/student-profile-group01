@@ -1,5 +1,6 @@
 package iiitb.student.action;
 
+import iiitb.student.model.GradeAggregate;
 import iiitb.student.service.GradesService;
 
 import java.util.ArrayList;
@@ -11,81 +12,93 @@ import com.opensymphony.xwork2.ActionSupport;
 public class HeaderAction extends ActionSupport{
 	
 	private String function;
-	private ArrayList<String> sem1subjectlist;
-	private ArrayList<String> sem2subjectlist;
-	private ArrayList<String> sem3subjectlist;
-	private ArrayList<String> sem4subjectlist;
-
-	public String getFunction() {
-		return function;
+	private ArrayList<Integer> semesterList;
+	private ArrayList<String> subjectList;
+	ArrayList<GradeAggregate> aggregateList;
+	private int semester;
+	private String subject;
+	private double cgpa;
+	
+	public double getCgpa() {
+		return cgpa;
 	}
+
+	public void setCgpa(double cgpa) {
+		this.cgpa = cgpa;
+	}
+
+	public int getSemester() {
+		return semester;
+	}
+
+	public void setSemester(int semester) {
+		this.semester = semester;
+	}
+
+	public String getSubject() {
+		return subject;
+	}
+
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+	
+	public ArrayList<GradeAggregate> getAggregateList() {
+		return aggregateList;
+	}
+
+	public void setAggregateList(ArrayList<GradeAggregate> aggregateList) {
+		this.aggregateList = aggregateList;
+	}
+
+	public ArrayList<Integer> getSemesterList() {
+		return semesterList;
+	}
+
+
+	public void setSemesterList(ArrayList<Integer> semesterList) {
+		this.semesterList = semesterList;
+	}
+
+
+	public ArrayList<String> getSubjectList() {
+		return subjectList;
+	}
+
+
+	public void setSubjectList(ArrayList<String> subjectList) {
+		this.subjectList = subjectList;
+	}
+
 
 	public void setFunction(String function) {
 		this.function = function;
 	}
 
-	public ArrayList<String> getSem1subjectlist() {
-		return sem1subjectlist;
+
+	public String getFunction() {
+		return function;
 	}
 
-	public void setSem1subjectlist(ArrayList<String> sem1subjectlist) {
-		this.sem1subjectlist = sem1subjectlist;
-	}
-
-	public ArrayList<String> getSem2subjectlist() {
-		return sem2subjectlist;
-	}
-
-	public void setSem2subjectlist(ArrayList<String> sem2subjectlist) {
-		this.sem2subjectlist = sem2subjectlist;
-	}
-
-	public ArrayList<String> getSem3subjectlist() {
-		return sem3subjectlist;
-	}
-
-	public void setSem3subjectlist(ArrayList<String> sem3subjectlist) {
-		this.sem3subjectlist = sem3subjectlist;
-	}
-
-	public ArrayList<String> getSem4subjectlist() {
-		return sem4subjectlist;
-	}
-
-	public void setSem4subjectlist(ArrayList<String> sem4subjectlist) {
-		this.sem4subjectlist = sem4subjectlist;
-	}
-	
 	
 	public String execute(){
 		String val="";
 		Map session=ActionContext.getContext().getSession();
 		function="Grades";
 		if(function.equalsIgnoreCase("Grades")){
-			
-			/*
-			 * the value of userID is hardcoded
-			 * has to be changed later 
-			 */
-			int userID=Integer.parseInt(session.get("userID").toString());
-			
-			sem1subjectlist = new ArrayList<String>();
-			sem1subjectlist = GradesService.getSem1Subjects("",userID);
-			session.put("Sem1Subjectlist", sem1subjectlist);
-			
-			sem2subjectlist = new ArrayList<String>();
-			sem2subjectlist = GradesService.getSem2Subjects("",userID);
-			session.put("Sem2Subjectlist", sem2subjectlist);
-			
-			sem3subjectlist = new ArrayList<String>();
-			sem3subjectlist = GradesService.getSem3Subjects("",userID);
-			session.put("Sem3Subjectlist", sem3subjectlist);
-			
-			sem4subjectlist = new ArrayList<String>();
-			sem4subjectlist = GradesService.getSem4Subjects("",userID);
-			session.put("Sem4Subjectlist", sem4subjectlist);
-			
 			val = "Grades";
+			System.out.println("val = "+val);
+			subjectList = new ArrayList<String>();
+
+			int userID=Integer.parseInt(session.get("userID").toString());
+			if(semester == -1 && subject.equalsIgnoreCase("-1")){
+				aggregateList = GradesService.computeAverage(userID);
+				cgpa = GradesService.getCGPA(aggregateList);
+			}
+			
+				semesterList = GradesService.getSemesterList("",userID);
+				subjectList.add("SelectSubject");
+		
 		}	
 		System.out.println("val = "+val);
 		return val;
