@@ -27,11 +27,11 @@
 			requestURI="/friends.action" pagesize="1">
 			<display:column property="friendName" />
 			<display:column>
-				<s:url action="friends.action" var="urlTag">
+				<s:url action="viewFriends.action" var="urlTag">
 					<s:param name="friendUserID">${friends.friendUserID}</s:param>
 				</s:url>
 				<a href="<s:property value="#urlTag" />"><img
-					src="images/student.jpg" alt="${friends.friendPhoto}" /></a>
+					src="${friends.friendPhoto}" alt="${friends.friendPhoto}'s photo" /></a>
 			</display:column>
 			<display:setProperty name="paging.banner.placement" value="bottom" />
 			<display:setProperty name="paging.banner.item_name" value="Friend" />

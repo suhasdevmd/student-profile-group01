@@ -1,5 +1,7 @@
 package iiitb.student.action;
 
+import java.util.ArrayList;
+
 import com.opensymphony.xwork2.ActionSupport;
 
 import iiitb.student.model.PersonalInformation;
@@ -11,29 +13,36 @@ public class SearchAction extends ActionSupport {
 	private String firstName;
 	private String middleName;
 	private String lastName;
-	private String dateOfBirth;
+	private String name;
+	private String DOB;
 	private char gender;
 	private String permanentAddress;
 	private String photograph;
-	private String rollNumber;
+	private String rollNo;
+	ArrayList<String> interests;
 
 	public String execute() {
 		PersonalInformation friend = new PersonalInformation();
-		System.out.println(this.getRollNumber());
+		System.out.println(this.getRollNo());
 		friend = SearchService.getFriend("where rollNumber='"
-				+ this.getRollNumber()+"'");
+				+ this.getRollNo()+"'");
 		if (friend == null) {
 			addActionError(getText("Invalid RollNumber"));
 			return "error";
 		}
+		
+		interests=new ArrayList<String>();
 
 		firstName = friend.getFirstName();
 		middleName = friend.getMiddleName();
 		lastName = friend.getLastName();
-		dateOfBirth = friend.getDateOfBirth();
-		photograph = friend.getPhotograph();
-		addActionMessage(getText("Search Successful, friends name is : "
-				+ firstName));
+		
+		rollNo=friend.getRollNumber();
+		name=firstName+" "+middleName+" "+lastName;
+		DOB = friend.getDateOfBirth();
+		photograph = "images/"+friend.getPhotograph();
+		interests=SearchService.getInterests(this.getUserID());
+		
 		return "success";
 	}
 
@@ -69,12 +78,12 @@ public class SearchAction extends ActionSupport {
 		this.lastName = lastName;
 	}
 
-	public String getDateOfBirth() {
-		return dateOfBirth;
+	public String getDOB() {
+		return DOB;
 	}
 
-	public void setDateOfBirth(String dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
+	public void setDOB(String dateOfBirth) {
+		this.DOB = dateOfBirth;
 	}
 
 	public char getGender() {
@@ -101,12 +110,28 @@ public class SearchAction extends ActionSupport {
 		this.photograph = photograph;
 	}
 
-	public String getRollNumber() {
-		return rollNumber;
+	public String getRollNo() {
+		return rollNo;
 	}
 
-	public void setRollNumber(String rollNumber) {
-		this.rollNumber = rollNumber;
+	public void setRollNo(String rollNumber) {
+		this.rollNo = rollNumber;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public ArrayList<String> getInterests() {
+		return interests;
+	}
+
+	public void setInterests(ArrayList<String> interests) {
+		this.interests = interests;
 	}
 
 }

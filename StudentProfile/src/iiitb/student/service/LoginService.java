@@ -18,12 +18,14 @@ public class LoginService {
 			query = "select * from logindetails where userName like '"
 					+ username + "'";
 			rs = DB.readFromDB(query, con);
+			if(rs == null) return null;
 			while(rs.next()) {
 				System.out.println(rs.toString());
 				loginDetails.setLastLoginDTS(rs.getTimestamp("lastLoginDTS"));
 				loginDetails.setLoginID(rs.getInt("loginID"));
 				loginDetails.setPassword(rs.getString("password"));
 				loginDetails.setSecretAnswer(rs.getString("secretAnswer"));
+				loginDetails.setRole(rs.getString("role"));
 				loginDetails.setSecretQuestion(rs.getString("secretQuestion"));
 				loginDetails.setUserID(rs.getInt("userID"));
 				loginDetails.setUserName(rs.getString("userName"));

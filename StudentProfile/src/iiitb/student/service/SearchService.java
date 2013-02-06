@@ -6,6 +6,7 @@ import iiitb.student.util.DB;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class SearchService {
 	
@@ -51,6 +52,34 @@ public class SearchService {
 		}
 		return friend;
 
+	}
+	
+	
+	public static ArrayList<String> getInterests(int userID) {
+
+		ArrayList<String> interests = new ArrayList<String>();
+		Connection con;
+		ResultSet rs;
+		String query;
+
+		try {
+			con = DB.getConnection();
+			
+			query="select value from interests i,studentinterests si where si.status='A' AND si.userID="+userID+" AND si.interestID=i.sno";
+			
+			rs = DB.readFromDB(query, con);
+			System.out.println(query);
+			while (rs.next()) {
+				interests.add(rs.getString("value"));
+				
+			}
+			// close the connection
+			con.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		return interests;
 	}
 
 

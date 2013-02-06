@@ -9,6 +9,7 @@ public class LoginDetails {
 	private String password;
 	private String secretQuestion;
 	private String secretAnswer;
+	private String role;
 	private Timestamp lastLoginDTS;
 	private int userID;
 	
@@ -18,8 +19,16 @@ public class LoginDetails {
 				"Password : " + password + "\n" +
 			    "Secret question : " + secretQuestion + "\n" +
 				"Secret answer : " + secretAnswer + "\n" +
+			    "Role : " + role + "\n" +
 			    "Last login time : " + lastLoginDTS + "\n" +
 				"User ID :" + userID;
+	}
+	public String getRole() {
+		return role;
+	}
+	
+	public void setRole(String role) {
+		this.role = role;
 	}
 	
 	public int getLoginID() {
@@ -64,9 +73,4 @@ public class LoginDetails {
 	public void setUserID(int userID) {
 		this.userID = userID;
 	}
-	
-	
-	
-	
-	
 }

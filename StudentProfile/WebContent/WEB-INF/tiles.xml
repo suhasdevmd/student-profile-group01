@@ -9,9 +9,10 @@
 		<put-attribute name="menu" value="/Menu.jsp" />
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/Footer.jsp" />
+		<put-attribute name="footer1" value="/Footer1.jsp" />
  
 	</definition>
-	<definition name="/welcome.tiles" extends="baseLayout">
+	<definition name="/welcomeStudent.tiles" extends="baseLayout">
 		<put-attribute name="title" value="Welcome page" />
 		<put-attribute name="body" value="/Welcome.jsp" />
 	</definition>
@@ -19,6 +20,11 @@
 		<put-attribute name="title" value="Welcome" />
 		<put-attribute name="body" value="/MyFriends.jsp" />
 	</definition>
+	<definition name="/viewfriendprofile.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Welcome" />
+		<put-attribute name="body" value="/ViewFriendProfile.jsp" />
+	</definition>
+	
 	<definition name="/error.tiles" extends="baseLayout">
 		<put-attribute name="title" value="Error page" />
 		<put-attribute name="body" value="/Error.jsp" />
@@ -29,9 +35,33 @@
 		<put-attribute name="body" value="/subjects.jsp"></put-attribute>
 	</definition>
 	
+	<definition name="/syllabus.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Syllabus Page"></put-attribute>
+		<put-attribute name="body" value="/Syllabus.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="/enrollment.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Enrollment Page"></put-attribute>
+		<put-attribute name="body" value="/Enrollment.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="/enrollment2.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Enrollment2 Page"></put-attribute>
+		<put-attribute name="body" value="/Enrollment2.jsp"></put-attribute>
+	</definition>
+	
 	<definition name="/headergrades.tiles" extends="baseLayout">
 		<put-attribute name="title" value="Grades page" />
 		<put-attribute name="body" value="/Grades.jsp" />
+	</definition>
+	
+	<definition name="/ViewProfile.tiles" extends="baseLayout">
+		<put-attribute name="title" value="View Profile Page" />
+		<put-attribute name="body" value="/ViewProfile.jsp" />
+	</definition>
+	<definition name="/EditProfile.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Edit Profile Page" />
+		<put-attribute name="body" value="/EditProfile.jsp" />
 	</definition>
 	
 	

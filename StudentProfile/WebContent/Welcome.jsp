@@ -13,12 +13,17 @@
 	<s:actionmessage/>
 	<h3 align="center">Student Profile Project</h3>
 	<form action="">
+	<s:submit value="view profile" name="viewprofile" action="ViewProfile"/>
+		<s:textfield id="rollNumber" name="rollNumber"  /> 
+	<s:submit value="Search" name="Search" action="search"/>
+	<!-- 
 	<s:submit value="Friends" name="Friends" action="friends"/>
 	<s:submit value="Subjects" name="Subjects" action="subject"/>
 	<s:textfield id="rollNumber" name="rollNumber"  /> 
 	<s:submit value="Search" name="Search" action="search"/>
 	<s:submit value="Grades" name="Grades" action="headergrades"/>
 	</form>
+	-->
 	<p></p><br/><br/><br/>
 	<h2 align="center">Content goes here.</h2>
 </body>
