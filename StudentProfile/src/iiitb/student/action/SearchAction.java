@@ -1,11 +1,13 @@
 package iiitb.student.action;
 
-import java.util.ArrayList;
-
-import com.opensymphony.xwork2.ActionSupport;
-
 import iiitb.student.model.PersonalInformation;
 import iiitb.student.service.SearchService;
+
+import java.util.ArrayList;
+import java.util.Map;
+
+import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
 
 public class SearchAction extends ActionSupport {
 
@@ -20,8 +22,24 @@ public class SearchAction extends ActionSupport {
 	private String photograph;
 	private String rollNo;
 	ArrayList<String> interests;
+	private boolean friendStatus;
+	
+	
+	
+	
+
+	public boolean getFriendStatus() {
+		return friendStatus;
+	}
+
+	public void setFriendStatus(boolean friendStatus) {
+		this.friendStatus = friendStatus;
+	}
 
 	public String execute() {
+		
+		Map<String,Object> session=ActionContext.getContext().getSession();
+		
 		PersonalInformation friend = new PersonalInformation();
 		System.out.println(this.getRollNo());
 		friend = SearchService.getFriend("where rollNumber='"
@@ -43,6 +61,16 @@ public class SearchAction extends ActionSupport {
 		photograph = "images/"+friend.getPhotograph();
 		interests=SearchService.getInterests(this.getUserID());
 		
+		
+		String userID=session.get("userID").toString();
+		boolean val=SearchService.isFriend(userID, rollNo);
+		
+		
+		if(val){
+			friendStatus=true;
+			System.out.println("is a friend");
+		}
+			
 		return "success";
 	}
 

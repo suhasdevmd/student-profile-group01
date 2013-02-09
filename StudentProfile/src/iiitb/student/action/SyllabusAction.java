@@ -6,7 +6,7 @@ public class SyllabusAction {
 	private String subjectName="";
 	private String syllabus="";
 	//hard coded for now will be coming from the url
-	private String subjectCode="SE101";
+	private String Subj="";
 	
 	public String getSubjectName() {
 		return subjectName;
@@ -26,11 +26,19 @@ public class SyllabusAction {
 
 	
 	public String execute(){
-		System.out.println("In execute of SyllabusAction");
+		System.out.println("In execute of SyllabusAction :subjectCode " + this.Subj);
 		SyllabusService syllabus = new SyllabusService();
-		this.subjectName = syllabus.getSubjectName(subjectCode);
-		this.syllabus = syllabus.getSyllabus(subjectCode);
+		this.subjectName = syllabus.getSubjectName(Subj);
+		this.syllabus = syllabus.getSyllabus(Subj);
 		return "success";
+	}
+
+	public String getSubj() {
+		return Subj;
+	}
+
+	public void setSubj(String subj) {
+		Subj = subj;
 	}
 
 	

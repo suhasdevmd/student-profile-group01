@@ -4,8 +4,8 @@ public class EnrollmentRules {
 	
 	
 	private int ruleID;
-	private int subjectID;
-	private int facultyID;
+	private String subjectID;
+	private String facultyID;
 	private String dueDate;
 	private int studentCount;
 	
@@ -17,16 +17,16 @@ public class EnrollmentRules {
 	public void setRuleID(int ruleID) {
 		this.ruleID = ruleID;
 	}
-	public int getSubjectID() {
+	public String getSubjectID() {
 		return subjectID;
 	}
-	public void setSubjectID(int subjectID) {
+	public void setSubjectID(String subjectID) {
 		this.subjectID = subjectID;
 	}
-	public int getFacultyID() {
+	public String getFacultyID() {
 		return facultyID;
 	}
-	public void setFacultyID(int facultyID) {
+	public void setFacultyID(String facultyID) {
 		this.facultyID = facultyID;
 	}
 	public String getDueDate() {

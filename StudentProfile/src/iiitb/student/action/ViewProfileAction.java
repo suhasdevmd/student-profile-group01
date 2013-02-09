@@ -18,6 +18,7 @@ public class ViewProfileAction extends ActionSupport{
 	private String name;
 	private String DOB;
 	private String rollNo;
+	private String photograph;
 	private PersonalInformation PInformation;
 	public int getUserID() {
 		return userID;
@@ -71,6 +72,16 @@ public class ViewProfileAction extends ActionSupport{
 	}
 
 
+	public String getPhotograph() {
+		return photograph;
+	}
+
+
+	public void setPhotograph(String photograph) {
+		this.photograph = photograph;
+	}
+
+
 	public String execute() {
  
 		session=ActionContext.getContext().getSession();
@@ -85,7 +96,7 @@ public class ViewProfileAction extends ActionSupport{
 		name= viewProfileService.getParameterValue(this.userID,"firstName") 
 		+" "+viewProfileService.getParameterValue(this.userID,"middleName")+" "+
 		viewProfileService.getParameterValue(this.userID,"lastName");
-		
+		this.setPhotograph(viewProfileService.getParameterValue(this.getUserID(), "photograph"));
 		DOB=viewProfileService.getParameterValue(this.userID,"dateOfBirth");
 			return "success";
 		}

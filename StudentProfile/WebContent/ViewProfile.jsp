@@ -15,7 +15,8 @@
 	<s:form action="EditProfile.action" method="post">
 		<table align="center">
 			<tr class="success">
-				<td></td>
+				<td><img src="images/<s:property value="photograph"/>" height="80" width="80" alt="<s:property value="photograph"/>'s photo" />
+				</td>
 				<td><s:property value="RollNo" /></td>
 
 			</tr>

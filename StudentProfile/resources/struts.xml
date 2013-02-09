@@ -20,7 +20,7 @@
 			</result>
 			<result name="facultySuccess" type="tiles">/welcomeStudent.tiles
 			</result>
-			<result name="adminSuccess" type="tiles">/welcomeStudent.tiles
+			<result name="adminSuccess" type="tiles">/welcomeAdmin.tiles
 			</result>
 			<result name="error" type="tiles">/error.tiles</result>
 		</action>
@@ -31,12 +31,18 @@
 			</result>
 			<result name="facultySuccess" type="tiles">/welcomeStudent.tiles
 			</result>
-			<result name="adminSuccess" type="tiles">/welcomeStudent.tiles
+			<result name="adminSuccess" type="tiles">/welcomeAdmin.tiles
+			</result>
+			<result name="forgotSuccess" type="tiles">/ForgotPassword.tiles
 			</result>
 			<result name="error" type="tiles">/error.tiles</result>
 		</action>
+		
+		<action name="forgotpassword" class="iiitb.student.action.ForgotPasswordAction">
+			<result name="success" type="tiles">/Login.jsp</result>
+		</action>
 
-		<action name="logout" method="logout" class="iiitb.student.action.LoginAction">
+		<action name="logout" class="iiitb.student.action.LogoutAction">
 			<result name="logout">/Login.jsp</result>
 		</action>
 
@@ -57,7 +63,7 @@
 			<result name="error" type="tiles">/error.tiles</result>
 		</action>
 
-		<!-- Syllabus Enrollment actions begin -->
+		<!-- Syllabus Enrollment actions begin 
 
 		<action name="syllabus" method="execute"
 			class="iiitb.student.action.SyllabusAction">
@@ -79,6 +85,20 @@
 			<result name="success" type="tiles">/enrollment.tiles</result>
 			<result name="error" type="tiles">/error.tiles</result>
 		</action>
+		-->
+		
+		<action name="syllabus" method="execute"  class="iiitb.student.action.SyllabusAction">
+			<result name="success" type="tiles">/syllabus.tiles</result>
+		</action>
+	
+		<action name="enroll" method="execute" class="iiitb.student.action.EnrollAction">
+			<result name="success" type="tiles">/enroll.tiles</result>
+		</action>
+
+		<action name="postenrollment" method="execute" class="iiitb.student.action.PostEnrollmentAction">
+			<result name="success" type="tiles">/enrollmentsuccessfull.tiles</result><result name="error" type="tiles">/error.tiles</result>
+		</action>
+		
 
 		<!-- Syllabus Enrollment actions end -->
 
@@ -98,7 +118,7 @@
 		</action>
 		<action name="EditProfileInDB" method="execute"
 			class="iiitb.student.action.EditProfileInDB">
-			<result name="success" type="tiles">/welcome.tiles</result>
+			<result name="success" type="tiles">/welcomeStudent.tiles</result>
 			<result name="error" type="chain">
 
 				<param name="actionName">EditProfile</param>
@@ -123,5 +143,102 @@
 			class="iiitb.student.action.ViewFriendProfileAction">
 			<result name="success" type="tiles">/viewfriendprofile.tiles</result>
 		</action>
+		
+		<action name="manageInterests" method="execute"
+			class="iiitb.student.action.InterestAction">
+			<result name="success" type="tiles">/manageInterests.tiles</result>
+			<result name="edit" type="tiles">/editInterests.tiles</result>
+		</action>
+		
+		<action name="editInterests" method="saveChanges"
+			class="iiitb.student.action.InterestAction">
+			<result name="success" type="tiles">/manageInterests.tiles</result>
+		</action>
+		
+		<action name="managefaculty" method="execute"
+			class="iiitb.student.action.ManageFacultyAction">
+			<result name="success" type="tiles">/manageFaculty.tiles</result>
+			<result name="edit" type="tiles">/manageFacultyedit.tiles</result>
+			<result name="delete" type="tiles">/manageFaculty.tiles</result>
+			<result name="addFaculty" type="tiles">/manageFacultyadd.tiles</result>
+		</action>
+		
+		<action name="addoreddit" method="execute"
+			class="iiitb.student.action.ManageFacultyAddOrEditAction">
+			<result name="success" type="tiles">/manageFaculty.tiles</result>
+		</action>
+		
+				<action name="admin_home" class="iiitb.student.action.AdminHome"
+			method="execute">
+			<result name="admin">Admin.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		
+		<action name="admin" class="iiitb.student.action.Admin"
+			method="execute">
+			<result name="success">AddUser.jsp</result>
+		</action>
+		
+		<action name="addUser" class="iiitb.student.action.AddUser"
+			method="execute">
+			<result name="success">Admin.jsp</result>
+		</action>
+		
+		<action name="GetUser" class="iiitb.student.action.GetUser"
+			method="execute">
+			<result name="success">UpdateUser.jsp</result>
+
+		</action>
+		
+		<action name="UpdateUser" class="iiitb.student.action.UpdateUser"
+			method="execute">
+			<result name="success">Admin.jsp</result>
+		</action>
+		
+		<action name="DeleteUser" class="iiitb.student.action.DeleteUser"
+			method="execute">
+			<result name="success">Admin.jsp</result>
+		</action>
+		
+		<action name="managenews" class="iiitb.student.action.ManageNewsAction">
+			<result name="success" type="tiles">/managenews.tiles</result>
+			<result name="addnewspage" type="tiles">/addnews.tiles</result>
+			<result name="updatenewspage" type="tiles">/updatenews.tiles</result>			
+		</action>
+		
+		<action name="addnews" class="iiitb.student.action.AddNewsAction">
+			<result name="addnewspage" type="tiles">/addnews.tiles</result>
+			<result name="success" type="tiles">/managenews.tiles</result>
+			<result name="error" type="tiles">/managenews.tiles</result>
+		</action>
+		
+		
+		<action name="updatenews" class="iiitb.student.action.UpdateNewsAction">
+			<result name="success" type="tiles">/managenews.tiles</result>
+			<result name="error" type="tiles">/managenews.tiles</result>
+		</action>
+		
+		<action name="addfriend" class="iiitb.student.action.AddFriendAction">
+			<result name="success" type="tiles">/welcomeStudent.tiles</result>
+		</action>
+		
+		
+		<action name="assignGrades" class="iiitb.student.action.GradesAction" method="assignGrades">
+			<result name="success" type="tiles">/assignGrades.tiles</result>
+		</action>
+		
+		
+		<action name="addEnroll" class="iiitb.student.action.AddEnrollmentRulesAction">
+			<result name="addenroll" type="tiles">/addenroll.tiles</result>
+			<result name="addenrollhome" type="tiles">/addenrollhome.tiles</result>
+			<result name="success" type="tiles">/addenrollhome.tiles</result>
+		</action>
+		
+		
+		<action name="updateEnroll" class="iiitb.student.action.UpdateEnrollmentAction">
+			<result name="updaterules" type="tiles">/updaterules.tiles</result>
+			<result name="success" type="tiles">/addenrollhome.tiles</result>
+		</action>
+		
 	</package>
 </struts>

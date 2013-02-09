@@ -35,6 +35,33 @@ public class ViewProfileService {
 
 		return ParameterValue;
 	}
+	
+	public String getParameterValueFromDB(int userID,String parameter) {
+
+		
+		Connection con;
+		ResultSet rs;
+		String query;
+		String ParameterValue=new String();
+		try {
+			con = DB.getConnection();
+			
+			query="select "+parameter+" from logindetails where userID="+userID;
+			
+			rs = DB.readFromDB(query, con);
+			System.out.println(query);
+			while (rs.next()) {
+				
+				ParameterValue=rs.getString(parameter);	
+			}
+			// close the connection
+			con.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		return ParameterValue;
+	}
 
 	
 public boolean getFriendshipStatus(int userID,int friendUserID) {

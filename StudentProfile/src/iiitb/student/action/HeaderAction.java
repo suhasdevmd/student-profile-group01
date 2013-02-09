@@ -84,19 +84,23 @@ public class HeaderAction extends ActionSupport{
 	public String execute(){
 		String val="";
 		Map session=ActionContext.getContext().getSession();
-		function="Grades";
+		int userID=Integer.parseInt(session.get("userID").toString());
+		
+		
 		if(function.equalsIgnoreCase("Grades")){
 			val = "Grades";
 			System.out.println("val = "+val);
 			subjectList = new ArrayList<String>();
 
-			int userID=Integer.parseInt(session.get("userID").toString());
-			if(semester == -1 && subject.equalsIgnoreCase("-1")){
+			semesterList = GradesService.getSemesterList("",userID);
+			
+			
+			/*if(semester == -1 && subject.equalsIgnoreCase("-1")){*/
 				aggregateList = GradesService.computeAverage(userID);
 				cgpa = GradesService.getCGPA(aggregateList);
-			}
+			//}
 			
-				semesterList = GradesService.getSemesterList("",userID);
+				
 				subjectList.add("SelectSubject");
 		
 		}	

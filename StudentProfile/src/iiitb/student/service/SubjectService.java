@@ -47,7 +47,7 @@ public class SubjectService {
 
 				subjects.add(subj);
 			}
-
+			con.close();
 
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -97,7 +97,7 @@ public class SubjectService {
 
 				subjects.add(subj);
 			}
-
+			con.close();
 
 		}catch (Exception e) {
 			// TODO: handle exception

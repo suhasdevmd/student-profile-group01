@@ -15,9 +15,12 @@
 	</p> --%>
 
 	<img alt="photo" src="images/student.jpg">
+	<br/><a href="ViewProfile.action">Profile</a> | <a href="logout.action">Logout</a>
 	<h5>Name: <s:property value="%{#session.userName}" /> </h5>
-	<h5>Roll No : MT2012142</h5>
-	<h5>Stream : SE</h5>
+	<s:if test="%{#session.role == 'student'}">
+	<h5>Roll No : <s:property value="%{#session.rollNumber}"/></h5>
+	</s:if>
+	<s:else><h5>Faculty/Admin</h5></s:else>
 
 </body>
 </html>

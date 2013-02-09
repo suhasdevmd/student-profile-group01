@@ -3,11 +3,16 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Map;
+import com.opensymphony.xwork2.ActionSupport;
 import iiitb.student.service.EnrollmentService;
 import java.util.Date;
 
-public class EnrollAction2 {
-//private int enrollmentID ; //shud get inserted into table by default
+import com.opensymphony.xwork2.ActionContext;
+/* this class basically deals with inserting values obtained from enroll.jsp to DB */
+
+@SuppressWarnings("serial")
+public class PostEnrollmentAction extends ActionSupport{
 private int userID; //taken from session
 public int getUserID() {
 	return userID;
@@ -71,34 +76,57 @@ public int getSemester() {
 public void setSemester(int semester) {
 	this.semester = semester;
 }
-	public String execute() {
-		//need to get username from session. using username get userID from session
-		System.out.println("in postenrollment2 the insert func class");
-		this.userID = 1 ;
-		this.grade = 'A';
-		this.status = 'Y';
-//		System.out.println("Subject " + this.subject) ;
-//		System.out.println("semester " + this.semester) ;
+	
+public String getDueDate() {
+	return dueDate;
+}
+
+public void setDueDate(String dueDate) {
+	this.dueDate = dueDate;
+}
+
+
+public String execute(){
+	     Map<String,Object> session = (Map<String, Object>) ActionContext.getContext().getSession() ;
+	    this.userID = (Integer)session.get("userID");
+		this.grade = '-';  //to be given by admin
+		this.status = 'Y'; // indicates he has enrolled 
+		System.out.println("------Subject in PostEnroll--------- " + this.subject);
+		
+		/*ProcessSubject is called because the multiple values selected from the checkbox
+		 is stored in 'subject' value as multiple strings
+		 separated by commas which will be split and the put into ArrayList 
+		*/
 		subjectlist = this.ProcessSubject();
+		
+		System.out.println("list size "+subjectlist.length);
+		
+			System.out.println("values "+subject);
+	
+		
 		//insert enrolled students into DB
 		EnrollmentService service = new EnrollmentService();
 		this.subjectIDList = service.getSubjectIDList(subjectlist);
 		this.dueDate = service.getDueDate(this.subjectIDList);
-		System.out.println(this.dueDate);
-		if(DueDateExceeded(this.dueDate)){
+		
+		//check if duedate to enroll is expired or not 
+		if(this.dueDate.isEmpty() == false){
+		if(DueDateExceeded(this.dueDate)==true){
+			addActionError(getText("error.enrollment"));
 			return "error";
+		  }
 		}
 		service.insertIntoDBEnrolled(this);
-		
+		service.deleteFromDB(this);
 		return "success";
 	}
 	
 	
 	private boolean DueDateExceeded(String Date) {
-		 Calendar currentDate = Calendar.getInstance();
+		
+		  Calendar currentDate = Calendar.getInstance();
 		  SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd");
 		  String dateNow = formatter.format(currentDate.getTime());
-		  System.out.println("Now the date is :=>  " + dateNow);	
 		  SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		  Date dueDate = null ;
 		  Date currDate = null ;
@@ -109,10 +137,6 @@ public void setSemester(int semester) {
 		  catch(Exception ex) {
 			  ex.printStackTrace();
 		  }
-     	  //test 
-     	System.out.println(sdf.format(dueDate));
-     	System.out.println(sdf.format(currDate));
-
      	if(currDate.after(dueDate)){
      		System.out.println("currDate is after dueDate");
      		return true;
@@ -126,14 +150,6 @@ public void setSemester(int semester) {
 		subjectlist = this.subject.split(", ");
 		
 		return subjectlist;
-	}
-
-	public String getDueDate() {
-		return dueDate;
-	}
-
-	public void setDueDate(String dueDate) {
-		this.dueDate = dueDate;
 	}
 
 	

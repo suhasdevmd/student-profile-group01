@@ -13,6 +13,7 @@ import com.opensymphony.xwork2.ActionSupport;
 public class GradesAction extends ActionSupport {
 
 	private ArrayList<SubjectEnrollment> gradesList = new ArrayList<SubjectEnrollment>();
+	private ArrayList<String> gradeValues;//=new ArrayList<String>();
 	private ArrayList<Integer> semesterList;
 	private ArrayList<String> subjectList;
 	ArrayList<GradeAggregate> aggregateList;
@@ -20,6 +21,10 @@ public class GradesAction extends ActionSupport {
 	private int semester;
 	private String subject;
 	private double cgpa;
+	private String newGrade;
+	private String type="";
+	private int enrollmentID;
+	private String rollNumber;
 	
 	public double getCgpa() {
 		return cgpa;
@@ -87,25 +92,27 @@ public class GradesAction extends ActionSupport {
 	}
 
 	public String execute(){
-		int userID = 0;
+		Map<String,Object> session = ActionContext.getContext().getSession();
+		
 		System.out.println("sem =" + semester);
 		System.out.println("subject = "+subject);
-		Map<String, Object> session;
-		session = ActionContext.getContext().getSession();
-		
 
-		userID=Integer.parseInt(session.get("userID").toString());
+		/*
+		 * userID has been hard coded
+		 * has to be changed later 
+		 * */
+		int userID = Integer.parseInt(session.get("userID").toString());
 		semesterList = GradesService.getSemesterList("",userID);
 		subjectList = GradesService.getSubjectsList("",userID,semPassedFromJS);
 		
 		if(semester == -1 && subject.equalsIgnoreCase("-1")){
-			gradesList.clear();
 			gradesList=null;
 			aggregateList = GradesService.computeAverage(userID);
 			cgpa = GradesService.getCGPA(aggregateList);
 		}
 		else if(subject.equalsIgnoreCase("-1")){
 			gradesList = GradesService.getGradesOfSpecificSemester(semester, userID);
+			subjectList = GradesService.getSubjectsList("",userID,semester);
 		}
 		else{
 			
@@ -115,10 +122,86 @@ public class GradesAction extends ActionSupport {
 			subjectList = GradesService.getSubjectsList("",userID,semester);
 			gradesList = GradesService.getGradesOfSpecificSemesterAndSubject(semester, subject, userID);
 			
-			System.out.println("000000 -- > "+subjectList.get(0));
 			
 		}
 		
 		return "success";
+	}
+	
+	
+	public String assignGrades(){
+		this.setGradesList(GradesService.getEnrolledRows());
+		System.out.println("I AM HEREEEEEEE");
+		
+		if(this.getType().equalsIgnoreCase("edit")){
+			 gradeValues=new ArrayList<String>();
+			this.gradeValues.add("-");
+			this.gradeValues.add("A");
+			this.gradeValues.add("A-");
+			this.gradeValues.add("B+");
+			this.gradeValues.add("B");
+			this.gradeValues.add("B-");
+			this.gradeValues.add("C+");
+			this.gradeValues.add("C");
+			this.gradeValues.add("D");
+			this.gradeValues.add("F");
+			System.out.println("editing for enrollmentID="+this.getEnrollmentID());
+			this.setGradesList(GradesService.getEnrolledRows());
+			return "success";
+		}
+		else if(this.getType().equalsIgnoreCase("search")){
+			System.out.println("searching for rollnumber="+this.getRollNumber());
+			this.setGradesList(GradesService.searchEnrolledRows(this.getRollNumber()));
+			return "success";
+		}
+		else if(this.getType().equalsIgnoreCase("update")){
+			System.out.println("updating enrollmentID="+this.getEnrollmentID()+" and grade="+this.getNewGrade());
+			GradesService.updateGrade(this.getEnrollmentID(), this.getNewGrade());
+			this.setGradesList(GradesService.getEnrolledRows());
+			return "success";
+		}
+		
+		
+		return "success";
+	}
+
+	public ArrayList<String> getGradeValues() {
+		return gradeValues;
+	}
+
+	public void setGradeValues(ArrayList<String> gradeValues) {
+		this.gradeValues = gradeValues;
+	}
+
+	public String getNewGrade() {
+		return newGrade;
+	}
+
+	public void setNewGrade(String grade) {
+		this.newGrade = grade;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public int getEnrollmentID() {
+		return enrollmentID;
+	}
+
+	public void setEnrollmentID(int enrollmentID) {
+		this.enrollmentID = enrollmentID;
+	}
+
+	public String getRollNumber() {
+		return rollNumber;
+	}
+
+	public void setRollNumber(String rollNumber) {
+		this.rollNumber = rollNumber;
 	}
 }

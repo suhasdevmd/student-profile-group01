@@ -84,4 +84,48 @@ public class SearchService {
 
 
 
+	public static boolean isFriend(String userID,String roll){
+		boolean isFrnd=false;
+		
+		
+		String friendID = "";
+		Connection con;
+		ResultSet rs;
+		String query,query1;
+
+		try {
+			con = DB.getConnection();
+			query = "select userID from personalinformation where rollNumber='"+roll+"';";
+			rs = DB.readFromDB(query, con);
+			System.out.println(query);
+			
+			while (rs.next()) {
+				friendID=rs.getString("userID");
+			}
+
+
+			query1="select count(*) as total from frienddetails where friendUserID='"+friendID+"' and userID='"+userID+"';";
+			rs = DB.readFromDB(query1, con);
+			
+			
+			while (rs.next()) {
+				if(rs.getInt("total")>0)
+					isFrnd=true;
+			}
+			
+
+			// close the connection
+			con.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		
+		
+		
+		return isFrnd;
+	}
+	
+	
+	
 }

@@ -31,7 +31,7 @@
 					<s:param name="friendUserID">${friends.friendUserID}</s:param>
 				</s:url>
 				<a href="<s:property value="#urlTag" />"><img
-					src="${friends.friendPhoto}" alt="${friends.friendPhoto}'s photo" /></a>
+					src="images/${friends.friendPhoto}" alt="${friends.friendPhoto}'s photo" height="100" width="100"/></a>
 			</display:column>
 			<display:setProperty name="paging.banner.placement" value="bottom" />
 			<display:setProperty name="paging.banner.item_name" value="Friend" />

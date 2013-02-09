@@ -15,7 +15,7 @@ public class LoginService {
 	public LoginDetails getLoginDetails(String username) {
 		try {
 			con = DB.getConnection();
-			query = "select * from logindetails where userName like '"
+			query = "select * from logindetails where userName = '"
 					+ username + "'";
 			rs = DB.readFromDB(query, con);
 			if(rs == null) return null;
@@ -29,6 +29,7 @@ public class LoginService {
 				loginDetails.setSecretQuestion(rs.getString("secretQuestion"));
 				loginDetails.setUserID(rs.getInt("userID"));
 				loginDetails.setUserName(rs.getString("userName"));
+				loginDetails.setStatus(rs.getString("status"));
 			}
 			System.out.println(loginDetails.toString());
 			con.close();
@@ -37,5 +38,25 @@ public class LoginService {
 			e.printStackTrace();
 		}
 		return loginDetails;
+	}
+	
+	public String getRollNumber(int userID){
+		String rollNumber="";
+		
+		try {
+			con = DB.getConnection();
+			query = "select rollNumber FROM personalinformation WHERE userID="+userID;
+			rs = DB.readFromDB(query, con);
+			while(rs.next()) {
+				rollNumber=rs.getString("rollNumber");
+			}
+			
+			con.close();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rollNumber;
+		
 	}
 }

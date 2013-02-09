@@ -12,6 +12,9 @@ public class SubjectEnrollment {
 	private String subjectCode;
 	private String result;
 	
+	private String rollNumber;
+	private String studentName;
+	
 	public String getResult() {
 		return result;
 	}
@@ -65,5 +68,17 @@ public class SubjectEnrollment {
 	}
 	public void setGrade(String grade) {
 		this.grade = grade;
+	}
+	public String getRollNumber() {
+		return rollNumber;
+	}
+	public void setRollNumber(String rollNumber) {
+		this.rollNumber = rollNumber;
+	}
+	public String getStudentName() {
+		return studentName;
+	}
+	public void setStudentName(String studentName) {
+		this.studentName = studentName;
 	}
 }

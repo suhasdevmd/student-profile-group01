@@ -12,6 +12,7 @@ public class LoginDetails {
 	private String role;
 	private Timestamp lastLoginDTS;
 	private int userID;
+	private String status;
 	
 	public String toString() {
 		return "Login ID : " + loginID + "\n" +
@@ -21,7 +22,8 @@ public class LoginDetails {
 				"Secret answer : " + secretAnswer + "\n" +
 			    "Role : " + role + "\n" +
 			    "Last login time : " + lastLoginDTS + "\n" +
-				"User ID :" + userID;
+				"User ID :" + userID + "\n" +
+				"Status :" + status;
 	}
 	public String getRole() {
 		return role;
@@ -72,5 +74,11 @@ public class LoginDetails {
 	}
 	public void setUserID(int userID) {
 		this.userID = userID;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
 	}
 }
