@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.custom.i18n.resources" value="ApplicationResources" />
+
+	<package name="default" extends="tiles-default" namespace="/">
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+
+		<action name="welcome" method="execute"
+			class="iiitb.student.action.WelcomeAction">
+			<result name="studentSuccess" type="tiles">/welcomeStudent.tiles
+			</result>
+			<result name="facultySuccess" type="tiles">/welcomeStudent.tiles
+			</result>
+			<result name="adminSuccess" type="tiles">/welcomeAdmin.tiles
+			</result>
+			<result name="error" type="tiles">/error.tiles</result>
+		</action>
+
+		<action name="login" method="execute" class="iiitb.student.action.LoginAction">
+			<result name="input">/Login.jsp</result>
+			<result name="studentSuccess" type="tiles">/welcomeStudent.tiles
+			</result>
+			<result name="facultySuccess" type="tiles">/welcomeStudent.tiles
+			</result>
+			<result name="adminSuccess" type="tiles">/welcomeAdmin.tiles
+			</result>
+			<result name="forgotpass" type="tiles">/ForgotPassword.tiles
+			</result>	
+			<result name="error" type="tiles">/error.tiles</result>
+		</action>
+		
+		<action name="forgotpassword" method="execute"
+			class="iiitb.student.action.ForgotPasswordAction">
+			<result name="success" type="tiles">/ForgotPassword.tiles</result>
+		</action>
+
+		<action name="logout" class="iiitb.student.action.LogoutAction">
+			<result name="logout">/Login.jsp</result>
+		</action>
+
+		<action name="subject" method="execute"
+			class="iiitb.student.action.SubjectAction">
+			<result name="success" type="tiles">/subjects.tiles</result>
+		</action>
+
+
+		<action name="headergrades" method="execute"
+			class="iiitb.student.action.HeaderAction">
+			<result name="Grades" type="tiles">/headergrades.tiles</result>
+		</action>
+
+		<action name="search" method="execute"
+			class="iiitb.student.action.SearchAction">
+			<result name="success" type="tiles">/viewfriendprofile.tiles</result>
+			<result name="error" type="tiles">/error.tiles</result>
+			<result name="myself" type="redirectAction">ViewProfile</result>
+		</action>
+
+		<!-- Syllabus Enrollment actions begin -->
+
+		
+		
+		<action name="syllabus" method="execute"  class="iiitb.student.action.SyllabusAction">
+			<result name="success" type="tiles">/syllabus.tiles</result>
+		</action>
+	
+		<action name="enroll" method="execute" class="iiitb.student.action.EnrollAction">
+			<result name="success" type="tiles">/enroll.tiles</result>
+		</action>
+
+		<action name="postenrollment" method="execute" class="iiitb.student.action.PostEnrollmentAction">
+			<result name="success" type="tiles">/enrollmentsuccessfull.tiles</result><result name="error" type="tiles">/error.tiles</result>
+		</action>
+		
+
+		<!-- Syllabus Enrollment actions end -->
+
+		<!-- Profile actions begin -->
+
+		<action name="ViewProfile" method="execute"
+			class="iiitb.student.action.ViewProfileAction">
+			<result name="success" type="tiles">/ViewProfile.tiles</result>
+			<result name="error" type="tiles">/error.tiles</result>
+		</action>
+
+		<action name="EditProfile" method="execute"
+			class="iiitb.student.action.EditProfileAction">
+			<result name="success" type="tiles">/EditProfile.tiles</result>
+			<result name="error" type="tiles">/error.tiles</result>
+
+		</action>
+		<action name="EditProfileInDB" method="execute"
+			class="iiitb.student.action.EditProfileInDB">
+			<result name="success" type="chain">
+				<param name="actionName">welcome</param>
+			</result>
+			<result name="error" type="chain">
+				<param name="actionName">EditProfile</param>
+			</result>
+		</action>
+
+		<!-- Profile actions end -->
+
+		<action name="grades" method="execute"
+			class="iiitb.student.action.GradesAction">
+			<result name="success" type="tiles">/headergrades.tiles</result>
+		</action>
+
+		<action name="friends" method="execute"
+			class="iiitb.student.action.FriendsAction">
+			<result name="success" type="tiles">/myfriends.tiles</result>
+		</action>
+		
+		<action name="viewFriends" method="execute"
+			class="iiitb.student.action.ViewFriendProfileAction">
+			<result name="success" type="tiles">/viewfriendprofile.tiles</result>
+		</action>
+		
+		<action name="manageInterests" method="execute"
+			class="iiitb.student.action.InterestAction">
+			<result name="success" type="tiles">/manageInterests.tiles</result>
+			<result name="edit" type="tiles">/editInterests.tiles</result>
+			<result name="displayPage" type="tiles">/page.tiles</result>
+		</action>
+		
+		<action name="editInterests" method="saveChanges"
+			class="iiitb.student.action.InterestAction">
+			<result name="success" type="tiles">/manageInterests.tiles</result>
+		</action>
+		
+		<action name="managefaculty" method="execute"
+			class="iiitb.student.action.ManageFacultyAction">
+			<result name="success" type="tiles">/manageFaculty.tiles</result>
+			<result name="edit" type="tiles">/manageFacultyedit.tiles</result>
+			<result name="delete" type="tiles">/manageFaculty.tiles</result>
+			<result name="addFaculty" type="tiles">/manageFacultyadd.tiles</result>
+		</action>
+		
+		<action name="addoreddit" method="execute"
+			class="iiitb.student.action.ManageFacultyAddOrEditAction">
+			<result name="success" type="tiles">/manageFaculty.tiles</result>
+		</action>
+		
+			<action name="admin_home" class="iiitb.student.action.AdminHome" method="execute">
+				<result name="admin" type="tiles">/AdminHome.tiles</result>
+				<result name="error" type="tiles">/error.tiles</result>
+		</action>
+		
+		<action name="admin" class="iiitb.student.action.Admin"
+			method="execute">
+			<result name="success" type="tiles">/AddUser.tiles</result>
+		</action>
+		
+		<action name="addUser" class="iiitb.student.action.AddUser"
+			method="execute">
+			<result name="success" type="tiles">/AdminHome.tiles</result>
+		</action>
+		
+		<action name="GetUser" class="iiitb.student.action.GetUser"
+			method="execute">
+			<result name="success" type="tiles">/UpdateUser.tiles</result>
+
+		</action>
+		
+		<action name="UpdateUser" class="iiitb.student.action.UpdateUser"
+			method="execute">
+			<result name="success" type="tiles">/AdminHome.tiles</result>
+		</action>
+		
+		<action name="DeleteUser" class="iiitb.student.action.DeleteUser"
+			method="execute">
+			<result name="success" type="tiles">/AdminHome.tiles</result>
+		</action>
+		
+		<action name="managenews" class="iiitb.student.action.ManageNewsAction">
+			<result name="success" type="tiles">/managenews.tiles</result>
+			<result name="addnewspage" type="tiles">/addnews.tiles</result>
+			<result name="updatenewspage" type="tiles">/updatenews.tiles</result>			
+		</action>
+		
+		<action name="addnews" class="iiitb.student.action.AddNewsAction">
+			<result name="addnewspage" type="tiles">/addnews.tiles</result>
+			<result name="success" type="tiles">/managenews.tiles</result>
+			<result name="error" type="tiles">/managenews.tiles</result>
+		</action>
+		
+		
+		<action name="updatenews" class="iiitb.student.action.UpdateNewsAction">
+			<result name="success" type="tiles">/managenews.tiles</result>
+			<result name="error" type="tiles">/managenews.tiles</result>
+		</action>
+		
+		<action name="addfriend" class="iiitb.student.action.AddFriendAction">
+			<result name="success" type="tiles">/welcomeStudent.tiles</result>
+		</action>
+		
+		
+		<action name="assignGrades" class="iiitb.student.action.GradesAction" method="assignGrades">
+			<result name="success" type="tiles">/assignGrades.tiles</result>
+		</action>
+		
+		
+		<action name="addEnroll" class="iiitb.student.action.AddEnrollmentRulesAction">
+			<result name="addenroll" type="tiles">/addenroll.tiles</result>
+			<result name="addenrollhome" type="tiles">/addenrollhome.tiles</result>
+			<result name="success" type="tiles">/addenrollhome.tiles</result>
+		</action>
+		
+		
+		<action name="updateEnroll" class="iiitb.student.action.UpdateEnrollmentAction">
+			<result name="updaterules" type="tiles">/updaterules.tiles</result>
+			<result name="success" type="tiles">/addenrollhome.tiles</result>
+		</action>
+		
+	</package>
+</struts>

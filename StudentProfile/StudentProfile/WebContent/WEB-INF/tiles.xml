@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="baseLayout" template="/BaseLayout.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header" value="/Header.jsp" />
+		<put-attribute name="menu" value="/Menu.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/Footer.jsp" />
+		<put-attribute name="footer1" value="/Footer1.jsp" />
+ 
+	</definition>
+	<definition name="/welcomeStudent.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Welcome page" />
+		<put-attribute name="body" value="/Welcome.jsp" />
+	</definition>
+	<definition name="/welcomeAdmin.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Welcome page" />
+		<put-attribute name="body" value="/WelcomeAdmin.jsp" />
+	</definition>
+	<definition name="/myfriends.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Welcome" />
+		<put-attribute name="body" value="/MyFriends.jsp" />
+	</definition>
+	<definition name="/viewfriendprofile.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Welcome" />
+		<put-attribute name="body" value="/ViewFriendProfile.jsp" />
+	</definition>
+	
+	<definition name="/error.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Error page" />
+		<put-attribute name="body" value="/Error.jsp" />
+	</definition>
+	
+	<definition name="/subjects.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Subjects Page"></put-attribute>
+		<put-attribute name="body" value="/subjects.jsp"></put-attribute>
+	</definition>
+	<!-- 
+	<definition name="/syllabus.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Syllabus Page"></put-attribute>
+		<put-attribute name="body" value="/Syllabus.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="/enrollment.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Enrollment Page"></put-attribute>
+		<put-attribute name="body" value="/Enrollment.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="/enrollment2.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Enrollment2 Page"></put-attribute>
+		<put-attribute name="body" value="/Enrollment2.jsp"></put-attribute>
+	</definition>
+	-->
+	
+	<definition name="/syllabus.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Syllabus Page"></put-attribute>
+		<put-attribute name="body" value="/Syllabus.jsp"></put-attribute>
+	</definition>
+	
+	
+	<definition name="/enroll.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Enroll Page"></put-attribute>
+		<put-attribute name="body" value="/Enroll.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="/enrollmentsuccessfull.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Enrollment Successfull Page"></put-attribute>
+		<put-attribute name="body" value="/EnrollmentSuccessfull.jsp"></put-attribute>
+	</definition> 
+	
+	
+	<definition name="/headergrades.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Grades page" />
+		<put-attribute name="body" value="/Grades.jsp" />
+	</definition>
+	
+	<definition name="/ViewProfile.tiles" extends="baseLayout">
+		<put-attribute name="title" value="View Profile Page" />
+		<put-attribute name="body" value="/ViewProfile.jsp" />
+	</definition>
+	<definition name="/EditProfile.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Edit Profile Page" />
+		<put-attribute name="body" value="/EditProfile.jsp" />
+	</definition>
+	
+	<definition name="/manageInterests.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Manage Interests" />
+		<put-attribute name="body" value="/ManageInterests.jsp" />
+	</definition>
+	
+	<definition name="/editInterests.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Edit Interests" />
+		<put-attribute name="body" value="/EditInterests.jsp" />
+	</definition>
+	
+	<definition name="/manageFaculty.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Grades page" />
+		<put-attribute name="body" value="/ManageFaculty.jsp" />
+	</definition>
+	
+	<definition name="/manageFacultyedit.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Grades page" />
+		<put-attribute name="body" value="/ManageFacultyAddOrEdit.jsp" />
+	</definition>
+	
+	<definition name="/manageFacultyadd.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Grades page" />
+		<put-attribute name="body" value="/ManageFacultyAddOrEdit.jsp" />
+	</definition>
+	
+	
+	<definition name="/managenews.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Manage News"></put-attribute>
+		<put-attribute name="body" value="/managenews.jsp"></put-attribute>
+	</definition>
+	
+	
+	<definition name="/addnews.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Add News"></put-attribute>
+		<put-attribute name="body" value="/addnews.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="/updatenews.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Update News"></put-attribute>
+		<put-attribute name="body" value="/updatenews.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="/assignGrades.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Assign Grades"></put-attribute>
+		<put-attribute name="body" value="/AssignGrades.jsp"></put-attribute>
+	</definition>
+	
+		
+	<definition name="/addenroll.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Add Enrollment Rule"/>
+		<put-attribute name="body" value="/addenroll.jsp"></put-attribute>
+	</definition>
+	
+	
+	<definition name="/addenrollhome.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Add Enrollment Home"/>
+		<put-attribute name="body" value="/addEnrollHome.jsp"></put-attribute>
+	</definition>
+	
+	
+	<definition name="/updaterules.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Update Enrollement Rules"/>
+		<put-attribute name="body" value="/updateenroll.jsp"></put-attribute>
+	</definition>
+	
+	
+	<definition name="/ForgotPassword.tiles" extends="baseLayout"> <!-- ashwin edit : start -->
+		<put-attribute name="title" value="Forgot Password" />
+		<put-attribute name="body" value="/ForgotPassword.jsp" ></put-attribute>
+	</definition> <!-- end -->
+	
+	<definition name="/page.tiles" extends="baseLayout"> <!-- ashwin edit : start -->
+		<put-attribute name="title" value="Welcome page" />
+		<put-attribute name="body" value="/Page.jsp" ></put-attribute>
+	</definition> <!-- end -->
+	
+	<definition name="/AdminHome.tiles" extends="baseLayout"> 
+		<put-attribute name="title" value="User Management" />
+		<put-attribute name="body" value="/Admin.jsp" ></put-attribute>
+	</definition>
+	
+	<definition name="/AddUser.tiles" extends="baseLayout"> 
+		<put-attribute name="title" value="User Management" />
+		<put-attribute name="body" value="/AddUser.jsp" ></put-attribute>
+	</definition>	
+	
+	<definition name="/UpdateUser.tiles" extends="baseLayout"> 
+		<put-attribute name="title" value="User Management" />
+		<put-attribute name="body" value="/UpdateUser.jsp" ></put-attribute>
+	</definition>	
+	
+	
+	
+	
+	
+	
+	
+	
+</tiles-definitions>
