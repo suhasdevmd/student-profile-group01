@@ -40,10 +40,11 @@ public class UpdateUser {
 		UserService userService = new UserService();
 		AdminService adminService = new AdminService();
 		user = adminService.getUser("AND userID=" + userID);
+		user.setUserID(this.userID);
 		user.setFirstName(firstName);
 		user.setMiddleName(middleName);
 		user.setLastName(lastName);
-		user.setDateOfBirth(UserService.getDate(dateOfBirth));
+		user.setDateOfBirth(dateOfBirth.substring(0, 10));
 		user.setGender(gender);
 		user.setPermanentAddress(permanentAddress);
 		user.setPhotograph(photograph);

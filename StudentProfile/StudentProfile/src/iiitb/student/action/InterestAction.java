@@ -10,8 +10,8 @@ import org.apache.struts2.components.ActionMessage;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class InterestAction extends ActionSupport {
-	
-	private String type="";
+
+	private String type = "";
 	private int interestID;
 	private String page;
 	private String interest;
@@ -21,104 +21,119 @@ public class InterestAction extends ActionSupport {
 	private String attribute;
 	private String value;
 	private int entityID;
+	private Boolean isValid = false;
 
 	private ArrayList<Interests> interestsList;
 	private ArrayList<String> interestCategories;
 	private ArrayList<String> interestSubCategories;
-	
-	public String execute(){
-		InterestService service =new InterestService();
-		
-		if(this.getEntityID()!=0){
+
+	public String execute() {
+		InterestService service = new InterestService();
+
+		if (this.getEntityID() != 0) {
 			this.setPage(InterestService.getPage(this.getEntityID()));
 			return "displayPage";
 		}
-		
-		System.out.println("type="+this.getType()+" id= "+this.getInterestID());
-		
-		if (this.getType().equalsIgnoreCase("interest")){
+
+		System.out.println("type=" + this.getType() + " id= "
+				+ this.getInterestID());
+
+		if (this.getType().equalsIgnoreCase("interest")) {
 			System.out.println("Interest");
-			if(service.insertCat(this.getInterest())!=1){
+			if (service.insertCat(this.getInterest()) != 1) {
 				addActionError(getText("Could not add interest"));
 			}
 			this.setInterestsList(service.getInterestsList());
 			this.setInterestCategories(service.getCategories());
 			return "success";
-			
-		}
-		else if (this.getType().equalsIgnoreCase("subcat")){
+
+		} else if (this.getType().equalsIgnoreCase("subcat")) {
 			System.out.println("Subcat");
-			if(service.insertSubCat(this.getSelectedInterest(), this.getSubcat())!=1){
+			if (service.insertSubCat(this.getSelectedInterest(),
+					this.getSubcat()) != 1) {
 				addActionError(getText("Could not add Subcategory"));
 			}
-			
+
 			this.setInterestsList(service.getInterestsList());
 			this.setInterestCategories(service.getCategories());
 			return "success";
-		}
-		else if (this.getType().equalsIgnoreCase("edit")){
+		} else if (this.getType().equalsIgnoreCase("edit")) {
 			System.out.println("edit");
 			this.setInterestsList(service.getInterest(this.getInterestID()));
 			return "edit";
-		}
-		else if (this.getType().equalsIgnoreCase("toggle")){
-			System.out.println("toggle");
-			service.toggleStatus(this.getInterestID());
-			
+		} else if (this.getType().equalsIgnoreCase("toggle")) {
+			if (isValid) {
+				System.out.println("toggle");
+				service.toggleStatus(this.getInterestID());
+				isValid=false;
+			}
+			else{
+				System.out.println("Toggled Already");
+			}
 			this.setInterestsList(service.getInterestsList());
 			this.setInterestCategories(service.getCategories());
 			return "success";
-		}
-		else{
+		} else {
 			System.out.println("else");
 			this.setInterestsList(service.getInterestsList());
 			this.setInterestCategories(service.getCategories());
-			System.out.println("Size="+this.getInterestsList().size());
+			System.out.println("Size=" + this.getInterestsList().size());
 			return "success";
 		}
-		
-		//return "error";
+
+		// return "error";
 	}
-	
-	public String saveChanges(){
+
+	public String saveChanges() {
 		System.out.println("Saving data");
-		InterestService service =new InterestService();
-		service.updateInterest(this.getEntity(), this.getAttribute(), this.getValue(),this.getPage(), this.getInterestID());
+		InterestService service = new InterestService();
+		service.updateInterest(this.getEntity(), this.getAttribute(),
+				this.getValue(), this.getPage(), this.getInterestID());
 		this.setInterestsList(service.getInterestsList());
 		this.setInterestCategories(service.getCategories());
 		return "success";
 	}
-	
+
 	public String getType() {
 		return type;
 	}
+
 	public void setType(String type) {
 		this.type = type;
 	}
+
 	public String getInterest() {
 		return interest;
 	}
+
 	public void setInterest(String value) {
 		this.interest = value;
 	}
+
 	public ArrayList<Interests> getInterestsList() {
 		return interestsList;
 	}
+
 	public void setInterestsList(ArrayList<Interests> interestsList) {
 		this.interestsList = interestsList;
 	}
+
 	public ArrayList<String> getInterestCategories() {
 		return interestCategories;
 	}
+
 	public void setInterestCategories(ArrayList<String> interestCategories) {
 		this.interestCategories = interestCategories;
 	}
+
 	public ArrayList<String> getInterestSubCategories() {
 		return interestSubCategories;
 	}
+
 	public void setInterestSubCategories(ArrayList<String> interestSubCategories) {
 		this.interestSubCategories = interestSubCategories;
 	}
+
 	public String getSubcat() {
 		return subcat;
 	}
@@ -175,6 +190,14 @@ public class InterestAction extends ActionSupport {
 		this.value = value;
 	}
 
+	public Boolean getIsValid() {
+		return isValid;
+	}
+
+	public void setIsValid(Boolean isValid) {
+		this.isValid = isValid;
+	}
+
 	public int getEntityID() {
 		return entityID;
 	}
@@ -182,7 +205,5 @@ public class InterestAction extends ActionSupport {
 	public void setEntityID(int entityID) {
 		this.entityID = entityID;
 	}
-	
-	
 
 }

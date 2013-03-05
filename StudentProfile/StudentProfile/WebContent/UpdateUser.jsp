@@ -28,7 +28,9 @@
 		<br />
 
 		<table>
-			<s:hidden value="userID" />
+			<s:hidden name="userID" />
+			<s:hidden name="rollNumber" />
+			<s:hidden name="password" />
 			<tr>
 				<td><s:label value="PERSONAL INFORMATION" cssStyle="color:red" />
 				</td>
@@ -55,7 +57,7 @@
 				<td><s:label name="dateOfBirth" value="Date of birth"></s:label>
 				</td>
 				<td><sd:datetimepicker name="dateOfBirth"
-						displayFormat="yyyy-MM-dd" />
+						displayFormat="dd-MMM-yyyy" value="dateOfBirth"/>
 				</td>
 			</tr>
 			<tr>

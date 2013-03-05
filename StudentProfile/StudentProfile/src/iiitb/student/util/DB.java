@@ -266,11 +266,8 @@ public class DB {
 		Connection connection = null;
 		try {
 			
-			System.out.println("ssssssssssss");
 			connection = getConnection();
-			
-			System.out.println("Successssssss");
-			
+	
 			connection.setAutoCommit(true);
 			rowsUpdated = update(connection, sql);
 		} catch (SQLException ex) {

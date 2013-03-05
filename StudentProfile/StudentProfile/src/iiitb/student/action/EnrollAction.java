@@ -13,6 +13,7 @@ private List<String>subjectlist = new ArrayList<String>();
 private String semester = new String();
 private String subject = new String();
 private ArrayList<String> defaultSelected;
+private ArrayList<Integer> semesterList;
 
 	
 	public String getSemester() {
@@ -49,6 +50,14 @@ private ArrayList<String> defaultSelected;
 
 
 		
+	public ArrayList<Integer> getSemesterList() {
+		return semesterList;
+	}
+
+	public void setSemesterList(ArrayList<Integer> semesterList) {
+		this.semesterList = semesterList;
+	}
+
 	public String execute(){
 
 		Map<String,Object> session = null;
@@ -65,7 +74,7 @@ private ArrayList<String> defaultSelected;
 		     setDefaultSelected(service.getEnrolledSubjects(userID));     
 		     
 		}
-			
+		setSemesterList(service.getSemesterList());
 	     return "success";
 	}
 

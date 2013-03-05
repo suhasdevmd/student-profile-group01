@@ -63,13 +63,14 @@ public class UserService {
 	}
 
 	public int updatePersonalInformation(UserDetails user) {
-		System.out.println("hello \n\n");
+		System.out.println("Update Personal Information \n\n");
 		String updateSQL = 
 			"update personalinformation "
 			+ "set firstName = '" + user.getFirstName()
 			+ "', middleName = '" + user.getMiddleName() + "', lastName= '" + user.getLastName() + "', dateOfBirth= '" + user.getDateOfBirth() + 
-			"', gender= '" + user.getGender() + "', permanentAddress= '" + user.getPermanentAddress() + "', photograph= '" + user.getPhotograph() + "', rollNumber= '" + user.getRollNumber() + "' " +
-			"where userID = " + user.getUserID();
+			"', gender= '" + user.getGender() + "', permanentAddress= '" + user.getPermanentAddress() +
+			"' where userID = " + user.getUserID();
+		System.out.println("query="+updateSQL);
 		return DB.update(updateSQL);
 	}
 	

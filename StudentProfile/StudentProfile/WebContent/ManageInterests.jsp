@@ -40,7 +40,7 @@
 	<br />
 	<br />
 	<hr />
-	<form name="displayInterests" action="manageInterests">
+	<form name="displayInterests" action="manageInterests" >
 	<!-- 
 		<table border="1">
 			<tr>
@@ -72,7 +72,7 @@
 			<display:column property="value" title="Value"/>
 			<display:column property="status" title="Status"/>
 			<display:column>
-				<s:url action="manageInterests.action" var="urlTag" escapeAmp="false">
+				<s:url action="manageInterests.action" var="urlTag" escapeAmp="false" encode="true">
 					<s:param name="interestID">${interestsList.interestID}</s:param>
 					<s:param name="type">edit</s:param>
 				</s:url>
@@ -81,16 +81,17 @@
 			<display:column>
 				<s:url action="manageInterests.action" var="urlTag" escapeAmp="false">
 					<s:param name="interestID">${interestsList.interestID}</s:param>
+					<s:param name="isValid">true</s:param>
 					<s:param name="type">toggle</s:param>
 				</s:url>
-				<a href="<s:property value="#urlTag" />">toggle</a>
+				<a  href="<s:property value="#urlTag" />">toggle</a>
 			</display:column>
 			<display:setProperty name="paging.banner.placement" value="bottom" />
 			<display:setProperty name="paging.banner.item_name" value="Interest" />
 			<display:setProperty name="paging.banner.items_name" value="Interests" />
 			<display:setProperty name="basic.show.header" value="true" />
 		</display:table>
-	</form>
+	</form >
 	<br />
 
 </body>

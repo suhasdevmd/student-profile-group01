@@ -48,7 +48,7 @@
 
 					<s:select label="semester" theme="simple" name="semester"
 						headerKey="-1" headerValue="Select semester"
-						list="#{'01':'1', '02':'2' , '03':'3' , '04':'4'}"
+						list="semesterList"
 						value="semester" onchange="handleChange(this.value)" />
 
 					

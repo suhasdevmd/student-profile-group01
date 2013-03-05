@@ -175,6 +175,35 @@ public class EnrollmentService {
 		}
 		return enrolledSubjectsList;
 	}
+	
+	
+	public ArrayList<Integer> getSemesterList() {
+		ArrayList<Integer> semesterList = new ArrayList<Integer>();
+		java.sql.ResultSet resultSet = null;
+
+		String query = "select distinct semester from subjectenrollment ";
+		java.sql.Connection connection = DB.getConnection();
+		resultSet = DB.readFromDB(query, connection);
+
+		try {
+			while (resultSet.next()) {
+				semesterList.add(resultSet.getInt("semester"));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		DB.close(resultSet);
+		DB.close(connection);
+
+		/*		System.out.println("=========================================================");
+		System.out.println("size = "+sem1subject.size());
+		for(int i=0;i<sem1subject.size();i++){
+			System.out.println("subject "+i+" : "+sem1subject.get(i));
+		}
+		System.out.println("=========================================================");*/
+		return semesterList;
+	}
 
 	public ArrayList<String> getEnrolledSubjectsList() {
 		return enrolledSubjectsList;

@@ -15,16 +15,6 @@
 		<s:actionerror />
 		<s:form action="friends.action" method="post">
 			<s:hidden id="userID" name="userID" />
-			<!-- <table border="1">
-		<s:iterator value="friendList">
-		<tr>
-			<td><s:property value="friendName" /></td>
-		</tr>
-		<tr>
-			<td><img src="<s:property value="photograph"/>" alt="<s:property value="friendName" />'s Pic" ></td>
-		</tr>
-		</s:iterator>
-		</table> -->
 			<display:table id="friends" name="friendList"
 				requestURI="/friends.action" pagesize="1">
 				<display:column property="friendName" />
@@ -34,7 +24,7 @@
 					</s:url>
 					<a href="<s:property value="#urlTag" />"><img
 						src="images/${friends.friendPhoto}"
-						alt="${friends.friendPhoto}'s photo" height="100" width="100" />
+						alt="${friends.friendName}'s photo" height="100" width="100" />
 					</a>
 				</display:column>
 				<display:setProperty name="paging.banner.placement" value="bottom" />

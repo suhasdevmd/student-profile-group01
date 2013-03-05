@@ -13,10 +13,10 @@
 <br>
 <br>
 
-<s:textfield name="subjectName" placeholder="Subject" align="centre"/>
+<h3><b><s:label name="subjectName"/></b></h3>
 <br>
 <br>
-<s:textarea name="syllabus" placeholder="Syllabus" align="centre" cols="40" rows="10" />
+<s:textarea name="syllabus" placeholder="Syllabus" align="centre" cols="40" rows="10" readonly="true"/>
 
 </body>
 </html>

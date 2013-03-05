@@ -35,7 +35,7 @@
 		} else {
 			document.getElementById("rollNumber").disabled = true;
 		}
-		alert(document.getElementById("rollNumber").disabled);
+		//alert(document.getElementById("rollNumber").disabled);
 	}
 </script>
 <link rel="stylesheet" href="style.css">

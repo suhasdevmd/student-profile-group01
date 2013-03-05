@@ -57,7 +57,7 @@ public class AddFriendAction extends ActionSupport{
 			
 			st=fs.addFriend(userID, RollNo);
 			System.out.println("st="+st+" username="+session.get("userName").toString() );
-
+			this.setRollNo("");
 			if(st>0)
 				return SUCCESS;
 		}
@@ -66,7 +66,7 @@ public class AddFriendAction extends ActionSupport{
 			
 			
 			st=fs.removeFriend(userID, RollNo);
-			
+			this.setRollNo("");
 			if(st>0){
 				return SUCCESS; 
 			}
