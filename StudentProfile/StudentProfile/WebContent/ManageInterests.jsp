@@ -79,7 +79,7 @@
 				<a href="<s:property value="#urlTag" />">Update Details</a>
 			</display:column>
 			<display:column>
-				<s:url action="manageInterests.action" var="urlTag" escapeAmp="false">
+				<s:url action="manageInterestsToggle.action" var="urlTag" escapeAmp="false">
 					<s:param name="interestID">${interestsList.interestID}</s:param>
 					<s:param name="isValid">true</s:param>
 					<s:param name="type">toggle</s:param>

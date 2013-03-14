@@ -18,33 +18,17 @@
 		<table>
 
 			<tr>
-				<s:select label="subject" id="subject" name="subject" headerKey="-1"
-					headerValue="Select Subject" list="subjList"
-					value="selectedSubject" required="true" />
-			</tr>
-			<tr>
-				<s:select label="faculty" id="faculty" name="faculty" headerKey="-1"
-					headerValue="Select Faculty"
-					list="facList" value="selectedFaculty"
-					required="true" />
+				<s:textfield labelposition="left" label="semester" id="semester" name="semester" required="true" />
 			</tr>
 			<tr>
 				<td><s:label name="duedate" value="Due Date"></s:label>
 				</td>
 				<td><sd:datetimepicker name="duedate"
-						displayFormat="dd-MM-yyyy" value="%{today}" /></td>
+						displayFormat="dd-MM-yyyy" value="%{'today'}" /></td>
 			</tr>
-
-			<tr>
-				<td><s:label name="StudentCount" value="Student Count"></s:label>
-				</td>
-				<td><s:textfield name="count" id="count"></s:textfield></td>
-			</tr>
-
-
 		</table>
 
-	<s:submit name="Add Enroll" value="Add Enroll"></s:submit>
+	<s:submit name="AddEnroll" value="Add Enroll" ></s:submit>
 
 	</s:form>
 

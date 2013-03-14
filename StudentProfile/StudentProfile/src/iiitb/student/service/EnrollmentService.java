@@ -135,7 +135,7 @@ public class EnrollmentService {
 		int d = DB.update(deleteSQL);
 		System.out.println("delete is " + d);
 	}
-
+/*
 	public String getDueDate(List<Integer> subjectIDList2) {
 		String dueDate = "";
 		for (int i = 0; i < subjectIDList2.size(); i++) {
@@ -155,7 +155,23 @@ public class EnrollmentService {
 		}
 		return dueDate;
 	}
+*/
+	
+	public String getDueDate(int semester) {
+		String dueDate = "";
+			String query = "Select dueDate from enrollmentrules where semester = '"
+					+ semester + "'";
+			ResultSet result = DB.readFromBmtcDB(query);
+			try {
+				while (result.next()) {
+					dueDate = result.getString("dueDate");
+				}
+			} catch (Exception ex) {
+				ex.getMessage();
 
+			}
+		return dueDate;
+	}
 	public ArrayList<String> getEnrolledSubjects(String userID) {
 		this.enrolledSubjectsList = new ArrayList<String>();
 		String query = "select subjectName from subjectDetails s,subjectenrollment e where s.subjectID=e.subjectID AND e.userID='"
@@ -181,7 +197,7 @@ public class EnrollmentService {
 		ArrayList<Integer> semesterList = new ArrayList<Integer>();
 		java.sql.ResultSet resultSet = null;
 
-		String query = "select distinct semester from subjectenrollment ";
+		String query = "select distinct semester from subjectdetails ";
 		java.sql.Connection connection = DB.getConnection();
 		resultSet = DB.readFromDB(query, connection);
 

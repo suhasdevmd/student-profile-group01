@@ -40,7 +40,7 @@
 				</tr>
 				<tr>
 					<td>Page:</td>
-					<td><s:textarea name="page" />
+					<td><s:textarea name="page" cols="40" rows="10"/>
 					</td>
 				</tr>
 				<tr>

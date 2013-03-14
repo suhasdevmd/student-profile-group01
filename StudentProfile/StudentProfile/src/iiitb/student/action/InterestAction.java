@@ -61,9 +61,9 @@ public class InterestAction extends ActionSupport {
 			System.out.println("edit");
 			this.setInterestsList(service.getInterest(this.getInterestID()));
 			return "edit";
-		} else if (this.getType().equalsIgnoreCase("toggle")) {
+		} /*else if (this.getType().equalsIgnoreCase("toggle")) {
 			if (isValid) {
-				System.out.println("toggle");
+				//System.out.println("toggle");
 				service.toggleStatus(this.getInterestID());
 				isValid=false;
 			}
@@ -73,7 +73,7 @@ public class InterestAction extends ActionSupport {
 			this.setInterestsList(service.getInterestsList());
 			this.setInterestCategories(service.getCategories());
 			return "success";
-		} else {
+		} */else {
 			System.out.println("else");
 			this.setInterestsList(service.getInterestsList());
 			this.setInterestCategories(service.getCategories());
@@ -82,6 +82,17 @@ public class InterestAction extends ActionSupport {
 		}
 
 		// return "error";
+	}
+	
+	public String toggleStatus(){
+		InterestService service = new InterestService();
+		System.out.println("toggle");
+		service.toggleStatus(this.getInterestID());
+		isValid=false;
+		
+		this.setInterestsList(service.getInterestsList());
+		this.setInterestCategories(service.getCategories());
+		return "success";
 	}
 
 	public String saveChanges() {

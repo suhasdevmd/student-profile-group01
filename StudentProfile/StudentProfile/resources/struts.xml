@@ -132,6 +132,11 @@
 			<result name="displayPage" type="tiles">/page.tiles</result>
 		</action>
 		
+		<action name="manageInterestsToggle" method="toggleStatus"
+			class="iiitb.student.action.InterestAction">
+			<result name="success" type="tiles">/manageInterests.tiles</result>
+		</action>
+		
 		<action name="editInterests" method="saveChanges"
 			class="iiitb.student.action.InterestAction">
 			<result name="success" type="tiles">/manageInterests.tiles</result>

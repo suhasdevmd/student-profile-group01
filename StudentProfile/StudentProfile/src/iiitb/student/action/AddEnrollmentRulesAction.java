@@ -10,20 +10,18 @@ import com.opensymphony.xwork2.ActionSupport;
 public class AddEnrollmentRulesAction extends ActionSupport{
 
 	private String addEnroll="";
-	private String subject;
-	private String faculty;
+	private int semester;
+	/*
+	private String faculty;*/
 	private String duedate;
-	private int count;
-	
+	/*private int count;
 	ArrayList<String> subjList=new ArrayList<String>();
 	ArrayList<String> facList=new ArrayList<String>();
-	
+	*/
 	ArrayList<EnrollmentRules> enrollList=new ArrayList<EnrollmentRules>();
 	
-	
-	
  	
-	
+	/*
 	
 	public ArrayList<String> getSubjList() {
 		return subjList;
@@ -40,7 +38,7 @@ public class AddEnrollmentRulesAction extends ActionSupport{
 	public void setFacList(ArrayList<String> facList) {
 		this.facList = facList;
 	}
-
+*/
 	public ArrayList<EnrollmentRules> getEnrollList() {
 		return enrollList;
 	}
@@ -49,14 +47,14 @@ public class AddEnrollmentRulesAction extends ActionSupport{
 		this.enrollList = enrollList;
 	}
 
-	public String getSubject() {
-		return subject;
+	public int getSubject() {
+		return semester;
 	}
 
-	public void setSubject(String subject) {
-		this.subject = subject;
+	public void setSubject(int semester) {
+		this.semester = semester;
 	}
-
+/*
 	public String getFaculty() {
 		return faculty;
 	}
@@ -64,7 +62,7 @@ public class AddEnrollmentRulesAction extends ActionSupport{
 	public void setFaculty(String faculty) {
 		this.faculty = faculty;
 	}
-
+*/
 	public String getDuedate() {
 		return duedate;
 	}
@@ -72,7 +70,7 @@ public class AddEnrollmentRulesAction extends ActionSupport{
 	public void setDuedate(String duedate) {
 		this.duedate = duedate;
 	}
-
+/*
 	public int getCount() {
 		return count;
 	}
@@ -80,7 +78,7 @@ public class AddEnrollmentRulesAction extends ActionSupport{
 	public void setCount(int count) {
 		this.count = count;
 	}
-
+*/
 	public String getAddEnroll() {
 		return addEnroll;
 	}
@@ -90,10 +88,15 @@ public class AddEnrollmentRulesAction extends ActionSupport{
 	}
 
 	
-	
-	
-	
-	
+
+	public int getSemester() {
+		return semester;
+	}
+
+	public void setSemester(int semester) {
+		this.semester = semester;
+	}
+
 	public String execute(){
 		
 		
@@ -103,7 +106,7 @@ public class AddEnrollmentRulesAction extends ActionSupport{
 		
 		if(addEnroll.equalsIgnoreCase(("add"))){
 			// display the current enrollment table
-			
+			System.out.println("add");
 			enrollList=AddEnrollmentService.getEnrolList();		
 			System.out.println("workin");
 			return "addenrollhome";
@@ -113,26 +116,27 @@ public class AddEnrollmentRulesAction extends ActionSupport{
 		
 		if(addEnroll.equalsIgnoreCase(("addnew"))){
 			
-
-			// retrieve the subj list 
+			System.out.println("addnew");
+			/* retrieve the subj list 
 			
 			
 			subjList=AddEnrollmentService.getSubjList();
 			
 			
-			// retrieve the faculty list
+			 retrieve the faculty list
 			
 			facList=AddEnrollmentService.getFacultyList();
-			
+			*/
 			return "addenroll";
 		}
 		
 		
 		
-		System.out.println(subject+" "+faculty+" "+duedate+" "+count);
+		//System.out.println(subject+" "+faculty+" "+duedate+" "+count);
 		
 		
-		AddEnrollmentService.addEnrollment(AddEnrollmentService.getSubjID(subject),AddEnrollmentService.getFacultyID(faculty), AddEnrollmentService.getDate(duedate), count);
+		//AddEnrollmentService.addEnrollment(AddEnrollmentService.getSubjID(subject),AddEnrollmentService.getFacultyID(faculty), AddEnrollmentService.getDate(duedate), coun000t);
+		AddEnrollmentService.addEnrollment(this.semester, AddEnrollmentService.getDate(duedate));
 		enrollList=AddEnrollmentService.getEnrolList();
 		
 		return SUCCESS;

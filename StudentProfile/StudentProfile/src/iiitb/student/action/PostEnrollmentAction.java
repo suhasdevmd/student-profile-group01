@@ -107,7 +107,8 @@ public String execute(){
 		//insert enrolled students into DB
 		EnrollmentService service = new EnrollmentService();
 		this.subjectIDList = service.getSubjectIDList(subjectlist);
-		this.dueDate = service.getDueDate(this.subjectIDList);
+		//this.dueDate = service.getDueDate(this.subjectIDList);
+		this.dueDate = service.getDueDate(this.getSemester());
 		
 		//check if duedate to enroll is expired or not 
 		if(this.dueDate.isEmpty() == false){

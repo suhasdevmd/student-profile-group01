@@ -24,10 +24,8 @@
 
 		<table>
 			<tr>
-				<td>Subject</td>
-				<td>Faculty</td>
+				<td>Semester</td>
 				<td>DueDate</td>
-				<td>Student Count</td>
 				<td>Update</td>
 				<td>Delete</td>
 			</tr>
@@ -35,10 +33,8 @@
 
 			<s:iterator value="enrollList">
 				<tr>
-					<td><s:property value="subjectID"></s:property></td>
-					<td><s:property value="facultyID"></s:property></td>
+					<td><s:property value="semester"></s:property></td>
 					<td><s:property value="dueDate"></s:property></td>
-					<td><s:property value="studentCount"></s:property></td>
 					<td><a
 						href="updateEnroll.action?upd_id=<s:property value = "ruleID" />">Update</a>
 					</td>

@@ -12,7 +12,7 @@ import java.util.Date;
 public class AddEnrollmentService {
 
 
-	public static int addEnrollment(int subj,int faculty,String dueDate,int count){
+	public static int addEnrollment(int semester,String dueDate){
 
 		int status=0;
 
@@ -21,12 +21,9 @@ public class AddEnrollmentService {
 		String query,query1,query2;
 
 
-		System.out.println(" faculty --> "+faculty);
-
 		try {
 			con = DB.getConnection();
-			query= "insert into enrollmentrules(subjectID,facultyID,dueDate,studentCount) values ('"+subj+"','"+faculty+"','"+dueDate+"','"+count+"');";
-
+			query= "insert into enrollmentrules(semester,dueDate) values ("+semester+",'"+dueDate+"');";
 			System.out.println(query);
 
 			status  = DB.update(con,query);
@@ -296,14 +293,16 @@ public class AddEnrollmentService {
 
 				enr.setRuleID(rs.getInt("ruleID"));
 
-				System.out.println("ss >> "+getSubjWithID(rs.getInt("subjectID")));
-				System.out.println("ssf >> "+getFacWithID(rs.getInt("facultyID")));
+				//System.out.println("ss >> "+getSubjWithID(rs.getInt("subjectID")));
+				//System.out.println("ssf >> "+getFacWithID(rs.getInt("facultyID")));
+				enr.setDueDate(rs.getDate("dueDate").toString());
+				enr.setSemester(rs.getInt("semester"));
 
+				/*
 				enr.setSubjectID(getSubjWithID(rs.getInt("subjectID")));
 				enr.setFacultyID(getFacWithID(rs.getInt("facultyID")));
-				enr.setDueDate(rs.getDate("dueDate").toString());
 				enr.setStudentCount(rs.getInt("studentCount"));
-
+				 */
 
 				en.add(enr);
 
@@ -439,7 +438,7 @@ public class AddEnrollmentService {
 
 
 
-
+/*
 	public static int updateRules(int ruleID,String subj,String faculty,String duedate,int count){
 
 		int st=0;
@@ -457,7 +456,24 @@ public class AddEnrollmentService {
 		return DB.update(updateSQL);
 
 	}
+*/
+	
+	public static int updateRules(int ruleID,String duedate,int semester){
 
+		int st=0;
+
+
+		String updateSQL = 
+			"update enrollmentrules "
+			+ "set semester = " + semester + ", dueDate = '" + duedate + "'"+  
+			" where ruleID = '" + ruleID+"';";
+
+
+		System.out.println("000 - >> "+updateSQL);
+
+		return DB.update(updateSQL);
+
+	}
 
 	public static ArrayList<EnrollmentRules> getRulewithID(String id){
 
@@ -481,10 +497,13 @@ public class AddEnrollmentService {
 				EnrollmentRules e=new EnrollmentRules();
 
 				e.setRuleID(rs.getInt("ruleID"));
+				e.setDueDate(rs.getDate("dueDate").toString());
+				e.setSemester(rs.getInt("semester"));
+				/*
 				e.setSubjectID(getSubjWithID(rs.getInt("subjectID")));
 				e.setFacultyID(getFacWithID(rs.getInt("facultyID")));
-				e.setDueDate(rs.getDate("dueDate").toString());
 				e.setStudentCount(rs.getInt("studentCount"));
+				*/
 
 
 				en.add(e);

@@ -16,7 +16,7 @@ public class AddUser {
 	private String dateOfBirth;
 	private String gender;
 	private String permanentAddress;
-	private String photograph;
+	private String photograph="";
 	private String rollNumber;
 	private int loginID;
 	private String userName;
@@ -54,7 +54,10 @@ public class AddUser {
 		user.setSecretQuestion(secretQuestion);
 		user.setSecretAnswer(secretAnswer);
 		
-		System.out.println("before insertIntoPersonalInformatio");
+		if(user.getPhotograph()==""){
+			user.setPhotograph("student.jpg");
+		}
+		
 		userService.insertIntoPersonalInformation(user);
 		System.out.println("after insertIntoPersonalInformatio");
 		

@@ -19,30 +19,15 @@
 			<tr>
 				<%-- <td><s:label name="newsAuthor" value="  Author Name :"></s:label>
 					</td> --%>
-				<td><s:textfield name="subjectID" label="Subject "
-						id="subjectID">
+				<td><s:textfield name="semester" label="Semester "
+						id="semester" readonly="true">
 					</s:textfield></td>
-			</tr>
-			<tr>
-				<%-- <td><s:label name="newsTitle" value="  Title :"></s:label>
-					</td> --%>
-				<td><s:textfield name="facultyID" label="Faculty" id="facultyID">
-					</s:textfield>
-				</td>
 			</tr>
 			<tr>
 				<%-- <td><s:label name="newsContent" value="  Content :"></s:label>
 					</td> --%>
 				<td><s:textfield name="dueDate" label="Due Date"
 						id="dueDate">
-					</s:textfield></td>
-			</tr>
-			
-			<tr>
-				<%-- <td><s:label name="newsContent" value="  Content :"></s:label>
-					</td> --%>
-				<td><s:textfield name="studentCount" label="Student Count"
-						id="studentCount">
 					</s:textfield></td>
 			</tr>
 		</table>

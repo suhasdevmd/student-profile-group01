@@ -4,11 +4,14 @@ public class EnrollmentRules {
 	
 	
 	private int ruleID;
+	private String dueDate;
+	private int semester;
+	
+	/*
 	private String subjectID;
 	private String facultyID;
-	private String dueDate;
 	private int studentCount;
-	
+	*/
 	
 	
 	public int getRuleID() {
@@ -17,6 +20,8 @@ public class EnrollmentRules {
 	public void setRuleID(int ruleID) {
 		this.ruleID = ruleID;
 	}
+	
+	/*
 	public String getSubjectID() {
 		return subjectID;
 	}
@@ -29,17 +34,26 @@ public class EnrollmentRules {
 	public void setFacultyID(String facultyID) {
 		this.facultyID = facultyID;
 	}
+	*/
 	public String getDueDate() {
 		return dueDate;
 	}
 	public void setDueDate(String dueDate) {
 		this.dueDate = dueDate;
 	}
+	/*
 	public int getStudentCount() {
 		return studentCount;
 	}
 	public void setStudentCount(int studentCount) {
 		this.studentCount = studentCount;
+	}
+	*/
+	public int getSemester() {
+		return semester;
+	}
+	public void setSemester(int semester) {
+		this.semester = semester;
 	}
 
 	

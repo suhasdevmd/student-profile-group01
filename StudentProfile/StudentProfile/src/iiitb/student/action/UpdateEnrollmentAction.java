@@ -14,13 +14,15 @@ public class UpdateEnrollmentAction extends ActionSupport{
 	
 	
 	private int ruleID;
+	private String dueDate;
+	private int semester;
+	/*
 	private String subjectID;
 	private String facultyID;
-	private String dueDate;
 	private int studentCount;
-	
+	*/
 	ArrayList<EnrollmentRules> enrollList=new ArrayList<EnrollmentRules>();
-	
+	ArrayList<EnrollmentRules> en=new ArrayList<EnrollmentRules>();
 	
 	
 	public ArrayList<EnrollmentRules> getEnrollList() {
@@ -40,9 +42,6 @@ public class UpdateEnrollmentAction extends ActionSupport{
 	}
 
 
-	ArrayList<EnrollmentRules> en=new ArrayList<EnrollmentRules>();
-	
-
 	public ArrayList<EnrollmentRules> getEn() {
 		return en;
 	}
@@ -50,7 +49,7 @@ public class UpdateEnrollmentAction extends ActionSupport{
 	public void setEn(ArrayList<EnrollmentRules> en) {
 		this.en = en;
 	}
-
+/*
 	public String getSubjectID() {
 		return subjectID;
 	}
@@ -66,7 +65,7 @@ public class UpdateEnrollmentAction extends ActionSupport{
 	public void setFacultyID(String facultyID) {
 		this.facultyID = facultyID;
 	}
-
+*/
 	public String getDueDate() {
 		return dueDate;
 	}
@@ -74,7 +73,15 @@ public class UpdateEnrollmentAction extends ActionSupport{
 	public void setDueDate(String dueDate) {
 		this.dueDate = dueDate;
 	}
+public int getSemester() {
+		return semester;
+	}
 
+	public void setSemester(int semester) {
+		this.semester = semester;
+	}
+
+	/*
 	public int getStudentCount() {
 		return studentCount;
 	}
@@ -82,7 +89,7 @@ public class UpdateEnrollmentAction extends ActionSupport{
 	public void setStudentCount(int studentCount) {
 		this.studentCount = studentCount;
 	}
-
+*/
 	public String getUpd_id() {
 		return upd_id;
 	}
@@ -117,11 +124,14 @@ public class UpdateEnrollmentAction extends ActionSupport{
 			en=AddEnrollmentService.getRulewithID(upd_id);
 			
 			ruleID=en.get(0).getRuleID();
+			dueDate=en.get(0).getDueDate();
+			semester=en.get(0).getSemester();
+			/*
 			subjectID=en.get(0).getSubjectID();
 			facultyID=en.get(0).getFacultyID();
-			dueDate=en.get(0).getDueDate();
-			studentCount=en.get(0).getStudentCount();
 			
+			studentCount=en.get(0).getStudentCount();
+			*/
 			enrollList=AddEnrollmentService.getEnrolList();
 			
 			return "updaterules";
@@ -138,7 +148,8 @@ public class UpdateEnrollmentAction extends ActionSupport{
 		
 		
 		
-		AddEnrollmentService.updateRules(ruleID, subjectID, facultyID, dueDate, studentCount);
+		//AddEnrollmentService.updateRules(ruleID, subjectID, facultyID, dueDate, studentCount);
+		AddEnrollmentService.updateRules(ruleID, dueDate, semester);
 		enrollList=AddEnrollmentService.getEnrolList();
 		
 		

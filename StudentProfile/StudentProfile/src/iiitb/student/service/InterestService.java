@@ -46,14 +46,15 @@ public class InterestService {
 
 	public ArrayList<Interests> getInterest(int interestID) {
 
-		ArrayList<Interests> interestList=new ArrayList<Interests>();
+		ArrayList<Interests> interestList = new ArrayList<Interests>();
 		Connection con;
 		ResultSet rs;
 		String query;
 
 		try {
 			con = DB.getConnection();
-			query = "SELECT `sno`, `entity`, `attribute`, `value`, `status`, `page` FROM interests WHERE sno="+interestID;
+			query = "SELECT `sno`, `entity`, `attribute`, `value`, `status`, `page` FROM interests WHERE sno="
+					+ interestID;
 
 			System.out.println(query);
 
@@ -67,7 +68,7 @@ public class InterestService {
 				newInterest.setValue(rs.getString("value"));
 				newInterest.setStatus(rs.getString("status"));
 				newInterest.setPage(rs.getString("page"));
-				
+
 				interestList.add(newInterest);
 			}
 			con.close();
@@ -78,7 +79,7 @@ public class InterestService {
 
 		return interestList;
 	}
-	
+
 	public ArrayList<String> getCategories() {
 
 		ArrayList<String> categories = new ArrayList<String>();
@@ -141,12 +142,13 @@ public class InterestService {
 		Connection con;
 		ResultSet rs;
 		String query;
-		int exists=0;
+		int exists = 0;
 
 		try {
 			con = DB.getConnection();
 
-			query = "SELECT count(*) as val from interests WHERE entity='"+category+"' AND attribute='Subcategory' AND value='"
+			query = "SELECT count(*) as val from interests WHERE entity='"
+					+ category + "' AND attribute='Subcategory' AND value='"
 					+ value + "'";
 			System.out.println(query);
 
@@ -222,61 +224,103 @@ public class InterestService {
 
 		return 0;
 	}
-	
-	
+
 	public int toggleStatus(int sno) {
 
 		Connection con;
 		ResultSet rs;
 		String query;
-		String status="";
+		String query_cascade = "";
+		String attribute = "";
+		String value = "";
+		String status = "";
 
 		try {
 			con = DB.getConnection();
-			query="SELECT status FROM interests WHERE sno="+sno;
-			
+			query = "SELECT attribute, value, status FROM interests WHERE sno="
+					+ sno;
+
 			rs = DB.readFromDB(query, con);
 			System.out.println(query);
 
 			while (rs.next()) {
-				status=rs.getString("status");
+				attribute = rs.getString("attribute");
+				value = rs.getString("value");
+				status = rs.getString("status");
 			}
-		
-			if(status.equalsIgnoreCase("A"))
-				query = "UPDATE interests set status='I' WHERE sno="+sno;
-			else
-				query = "UPDATE interests set status='A' WHERE sno="+sno;
-				System.out.println(query);
 
-				DB.update(con, query);
+			if (status.equalsIgnoreCase("A")) {
+				query = "UPDATE interests set status='I' WHERE sno=" + sno;
+				if (attribute.equalsIgnoreCase("Category")) {
+					query_cascade = "UPDATE interests set status='I' WHERE entity='"
+							+ value + "' AND attribute='Subcategory'";
+				}
+			} else {
+				query = "UPDATE interests set status='A' WHERE sno=" + sno;
+				if (attribute.equalsIgnoreCase("Category")) {
+					query_cascade = "UPDATE interests set status='A' WHERE entity='"
+							+ value + "' AND attribute='Subcategory'";
+				}
+			}
 
-				con.close();
+			System.out.println(query);
+			System.out.println(query_cascade);
 
-				return 1;
+			DB.update(con, query);
+			if (attribute.equalsIgnoreCase("Category")) {
+				DB.update(con, query_cascade);
+			}
+			con.close();
+
+			return 1;
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 
 		return 0;
 	}
-	
-	public int updateInterest(String entity,String attribute,String value,String page,int sno) {
+
+	public int updateInterest(String entity, String attribute, String value,
+			String page, int sno) {
 
 		Connection con;
-		//ResultSet rs;
+		ResultSet rs;
+		String old_value = "";
 		String query;
+		String query_fetch = "";
+		String query_cascade = "";
 
 		try {
 			con = DB.getConnection();
-				query = "UPDATE interests set entity='"+entity+"', attribute='"+attribute+"', value='"+value+"', page='"+page+"' WHERE sno="+sno;
 
-				System.out.println(query);
+			query_fetch = "SELECT value from interests WHERE sno=" + sno;
 
-				DB.update(con, query);
+			query = "UPDATE interests set entity='" + entity + "', attribute='"
+					+ attribute + "', value='" + value + "', page='" + page
+					+ "' WHERE sno=" + sno;
 
-				con.close();
+			rs = DB.readFromDB(query_fetch, con);
+			while (rs.next()) {
+				old_value = rs.getString("value");
+			}
 
-				return 1;
+			if (attribute.equalsIgnoreCase("Category")) {
+				query_cascade = "UPDATE interests set entity='" + value
+						+ "' WHERE entity='" + old_value
+						+ "' AND attribute='Subcategory'";
+			}
+
+			System.out.println(query_fetch);
+			System.out.println(query);
+			System.out.println(query_cascade);
+
+			DB.update(con, query);
+			if (attribute.equalsIgnoreCase("Category")) {
+				DB.update(con, query_cascade);
+			}
+			con.close();
+
+			return 1;
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -284,8 +328,12 @@ public class InterestService {
 		return 0;
 	}
 
-	public static ArrayList<Interests> getInterestsAndID(int userID) { // ------------------------------------Ashwin edit : start 
-		System.out.println("--------------------------------------------------------- here !!!!");
+	public static ArrayList<Interests> getInterestsAndID(int userID) { // ------------------------------------Ashwin
+																		// edit
+																		// :
+																		// start
+		System.out
+				.println("--------------------------------------------------------- here !!!!");
 		ArrayList<Interests> interests = new ArrayList<Interests>();
 		Connection con;
 		ResultSet rs;
@@ -293,16 +341,18 @@ public class InterestService {
 
 		try {
 			con = DB.getConnection();
-			query = "select i.value, i.sno from studentinterests si, interests i where si.interestID = i.sno and si.userID="+userID+" and si.status ='A'";
+			query = "select i.value, i.sno from studentinterests si, interests i where si.interestID = i.sno and si.userID="
+					+ userID + " and si.status ='A'";
 			System.out.println(query);
 			rs = DB.readFromDB(query, con);
 			while (rs.next()) {
-				System.out.println("-------------------------------------inside the while loop !!!");
+				System.out
+						.println("-------------------------------------inside the while loop !!!");
 				Interests interest = new Interests();
-				String temp1 =rs.getString("value");
+				String temp1 = rs.getString("value");
 				interest.setValue(temp1);
 				System.out.println(temp1);
-				
+
 				int temp2 = rs.getInt("sno");
 				interest.setInterestID(temp2);
 				System.out.println(temp2);
@@ -314,23 +364,24 @@ public class InterestService {
 			// TODO: handle exception
 		}
 
-		System.out.println("--------------------------------------------------------- here !!!!");
+		System.out
+				.println("--------------------------------------------------------- here !!!!");
 		return interests;
 	}
-	
+
 	public static String getPage(int entityID) {
-		String page ="";
+		String page = "";
 		Connection con;
 		ResultSet rs;
 		String query;
 
 		try {
 			con = DB.getConnection();
-			query = "select page from interests where sno="+entityID;
+			query = "select page from interests where sno=" + entityID;
 			rs = DB.readFromDB(query, con);
 			System.out.println(query);
 			while (rs.next()) {
-				page = rs.getString("page");				
+				page = rs.getString("page");
 			}
 			// close the connection
 			con.close();
@@ -339,6 +390,7 @@ public class InterestService {
 		}
 
 		return page;
-	} // -------------------------------------------------------------------------- ashwin edit: end
+	} // --------------------------------------------------------------------------
+		// ashwin edit: end
 
 }
