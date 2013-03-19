@@ -24,12 +24,12 @@ public class EnrollmentService {
 			ResultSet result = DB.readFromBmtcDB(query);
 			while (result.next()) {
 				subjectList.add(result.getString("subjectName"));
-				System.out.println("Inside Enrollment.getSubjectList");
+				//System.out.println("Inside Enrollment.getSubjectList");
 			}
-			// test purpose
+			/* test purpose
 			for (int i = 0; i < subjectList.size(); i++)
 				System.out.println(subjectList.get(i));
-
+			 */
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
@@ -39,7 +39,7 @@ public class EnrollmentService {
 	public ArrayList<Integer> getSubjectIDList(String[] subjectlist2) {
 		subjectIDList = new ArrayList<Integer>();
 		String query = "";
-		System.out.println("sublistsize   " + subjectlist2.length);
+		//System.out.println("sublistsize   " + subjectlist2.length);
 		for (int iter = 0; iter < subjectlist2.length; iter++) {
 			query = "Select subjectID from subjectdetails where subjectName = '"
 					+ subjectlist2[iter] + "'";
@@ -47,12 +47,12 @@ public class EnrollmentService {
 				ResultSet result = DB.readFromBmtcDB(query);
 				while (result.next()) {
 					this.subjectIDList.add(result.getInt("subjectID"));
-					System.out.println("Inside Enrollment.getSubjectIDList");
+					//System.out.println("Inside Enrollment.getSubjectIDList");
 				}
-				// test purpose
+				/* test purpose
 				for (int i = 0; i < subjectIDList.size(); i++)
 					System.out.println(subjectIDList.get(i));
-
+				*/
 			} catch (Exception ex) {
 				ex.printStackTrace();
 			}
@@ -83,8 +83,8 @@ public class EnrollmentService {
 		try {
 			con = DB.getConnection();
 			for (int loop = 0; loop < subjectIDList.size(); loop++) {
-				System.out.println("subjects selected "
-						+ subjectIDList.get(loop));
+				/*System.out.println("subjects selected "
+						+ subjectIDList.get(loop));*/
 				int subId = subjectIDList.get(loop);
 
 				findRowsQuery = "SELECT count(*) as rcount FROM subjectEnrollment where userID="
@@ -93,12 +93,12 @@ public class EnrollmentService {
 						+ subId + " AND semester=" + semester;
 
 				rs = DB.readFromDB(findRowsQuery, con);
-				System.out.println(findRowsQuery);
+				//System.out.println(findRowsQuery);
 				while (rs.next()) {
 					rowCount = rs.getInt("rcount");
 				}
-				System.out.println("rowcount = " + rowCount + " subjectid= "
-						+ subId);
+				/*System.out.println("rowcount = " + rowCount + " subjectid= "
+						+ subId);*/
 				if (rowCount == 0) {
 					String insertSQL = "insert into subjectenrollment "
 							+ "(userID,subjectID,semester,status,grade)"
@@ -106,10 +106,10 @@ public class EnrollmentService {
 							+ semester + "', '" + status + "', '" + grade + "'"
 							+ ");";
 
-					System.out.println("insert query = " + insertSQL);
+					//System.out.println("insert query = " + insertSQL);
 
 					int i = DB.update(insertSQL);
-					System.out.println("insert is " + i);
+					//System.out.println("insert is " + i);
 				}
 			}
 			con.close();
@@ -131,9 +131,9 @@ public class EnrollmentService {
 				+ postEnrollment2.getSemester() + " AND userID='"
 				+ postEnrollment2.getUserID() + "' AND subjectID NOT IN ("
 				+ notIN + ")";
-		System.out.println("delete " + deleteSQL);
+		//System.out.println("delete " + deleteSQL);
 		int d = DB.update(deleteSQL);
-		System.out.println("delete is " + d);
+		//System.out.println("delete is " + d);
 	}
 /*
 	public String getDueDate(List<Integer> subjectIDList2) {
@@ -180,11 +180,12 @@ public class EnrollmentService {
 		try {
 			while (result.next()) {
 				this.enrolledSubjectsList.add(result.getString("subjectName"));
-				System.out.println("Inside Enrollment.getEnrolledSubjectList");
+				//System.out.println("Inside Enrollment.getEnrolledSubjectList");
 			}
-			// test purpose
+			/* test purpose
 			for (int i = 0; i < this.enrolledSubjectsList.size(); i++)
 				System.out.println(this.enrolledSubjectsList.get(i));
+			*/
 
 		} catch (Exception ex) {
 			ex.printStackTrace();

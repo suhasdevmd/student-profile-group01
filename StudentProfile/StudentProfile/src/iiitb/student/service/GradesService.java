@@ -23,7 +23,6 @@ public class GradesService {
 			GradeAggregate ga = new GradeAggregate();
 			numOfsubjects =0;
 			gradePoint=0;
-			System.out.println();
 			String query = "select grade,semester from subjectenrollment where userID="+uid+" and semester="+i;
 		
 			resultSet = DB.readFromDB(query, connection);
@@ -71,9 +70,9 @@ public class GradesService {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			System.out.println("No of subjects in sem "+i+" is :" +numOfsubjects);
+
 			double gpa = gradePoint / numOfsubjects ;
-			System.out.println("GPA"+gpa);
+
 			ga.setSemester("Semester "+i);
 			ga.setAggregate(gpa);
 			aggregateList.add(ga);
@@ -83,10 +82,11 @@ public class GradesService {
 		numOfSemesters=0;
 		DB.close(resultSet);
 		DB.close(connection);
-		System.out.println(aggregateList.size());
+/*
 		for(int j=0;j<aggregateList.size();j++){
 			System.out.println("sem = "+aggregateList.get(j).getSemester()+" gpa = "+aggregateList.get(j).getAggregate());			
 		}
+	*/
 		return aggregateList;
 	}
 	
@@ -128,7 +128,6 @@ public class GradesService {
 			System.out.println("subject "+i+" : "+sem1subject.get(i));
 		}
 		System.out.println("=========================================================");*/
-		System.out.println("num of sems = "+numOfSemesters);
 		return subjectList;
 	}
 
@@ -190,7 +189,7 @@ public class GradesService {
 		}
 		DB.close(resultSet);
 		DB.close(connection);
-
+/*
 		System.out.println("===============@@@@@@@@@@@@@@@@@@@@@@@@@@@==============");
 		System.out.println("size = "+gradesList.size());
 		for(int i=0;i<gradesList.size();i++){
@@ -201,6 +200,7 @@ public class GradesService {
 			System.out.println("Result :"+gradesList.get(i).getResult());
 		}
 		System.out.println("===============@@@@@@@@@@@@@@@@@@@@@@@@@@@==============");
+*/
 		return gradesList;
 	}
 
@@ -233,7 +233,7 @@ public class GradesService {
 		}
 		DB.close(resultSet);
 		DB.close(connection);
-
+/*
 		System.out.println("===============@@@@@@@@@@@@@@@@@@@@@@@@@@@==============");
 		System.out.println("size = "+gradesList.size());
 		for(int i=0;i<gradesList.size();i++){
@@ -244,6 +244,7 @@ public class GradesService {
 			System.out.println("Result :"+gradesList.get(i).getResult());
 		}
 		System.out.println("===============@@@@@@@@@@@@@@@@@@@@@@@@@@@==============");
+*/
 		return gradesList;
 	}
 	
@@ -256,7 +257,7 @@ public class GradesService {
 		String query = "select * from subjectenrollment se, subjectdetails sd , personalinformation p where se.subjectID = sd.subjectID and se.status='Y' and se.userID=p.userID AND p.rollNumber='"+rollNumber+"'";                               
 		java.sql.Connection connection = DB.getConnection();
 		resultSet = DB.readFromDB(query, connection);
-		System.out.println(query);
+		//System.out.println(query);
 		try {
 			while (resultSet.next()) {
 				SubjectEnrollment se = new SubjectEnrollment();
@@ -280,7 +281,7 @@ public class GradesService {
 		}
 		DB.close(resultSet);
 		DB.close(connection);
-
+/*
 		System.out.println("===============@@@@@@@@@@@@@@@@@@@@@@@@@@@==============");
 		System.out.println("size = "+gradesList.size());
 		for(int i=0;i<gradesList.size();i++){
@@ -291,6 +292,7 @@ public class GradesService {
 			System.out.println("Result :"+gradesList.get(i).getResult());
 		}
 		System.out.println("===============@@@@@@@@@@@@@@@@@@@@@@@@@@@==============");
+*/
 		return gradesList;
 	}
 	
@@ -327,7 +329,7 @@ public class GradesService {
 		}
 		DB.close(resultSet);
 		DB.close(connection);
-
+/*
 		System.out.println("===============@@@@@@@@@@@@@@@@@@@@@@@@@@@==============");
 		System.out.println("size = "+gradesList.size());
 		for(int i=0;i<gradesList.size();i++){
@@ -338,6 +340,7 @@ public class GradesService {
 			System.out.println("Result :"+gradesList.get(i).getResult());
 		}
 		System.out.println("===============@@@@@@@@@@@@@@@@@@@@@@@@@@@==============");
+*/
 		return gradesList;
 	}
 	
@@ -352,7 +355,7 @@ public class GradesService {
 			con = DB.getConnection();
 				query = "UPDATE subjectenrollment set grade='"+grade+"' WHERE enrollmentID="+enrollmentID;
 
-				System.out.println(query);
+				//System.out.println(query);
 
 				DB.update(con, query);
 

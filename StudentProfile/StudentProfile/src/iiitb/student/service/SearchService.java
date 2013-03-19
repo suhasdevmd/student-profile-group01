@@ -14,7 +14,7 @@ public class SearchService {
 		ResultSet resultSet = null;
 		String query= "select * from personalinformation "+selectionModifier;
 
-		System.out.println("Search query =" +query);
+		//System.out.println("Search query =" +query);
 		Connection connection = DB.getConnection();
 		resultSet = DB.readFromDB(query, connection);
 		try {
@@ -68,7 +68,7 @@ public class SearchService {
 			query="select value from interests i,studentinterests si where si.status='A' AND si.userID="+userID+" AND si.interestID=i.sno";
 			
 			rs = DB.readFromDB(query, con);
-			System.out.println(query);
+			//System.out.println(query);
 			while (rs.next()) {
 				interests.add(rs.getString("value"));
 				
@@ -97,7 +97,7 @@ public class SearchService {
 			con = DB.getConnection();
 			query = "select userID from personalinformation where rollNumber='"+roll+"';";
 			rs = DB.readFromDB(query, con);
-			System.out.println(query);
+			//System.out.println(query);
 			
 			while (rs.next()) {
 				friendID=rs.getString("userID");

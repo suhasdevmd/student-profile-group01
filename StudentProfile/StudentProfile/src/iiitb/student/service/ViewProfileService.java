@@ -22,7 +22,7 @@ public class ViewProfileService {
 			query="select "+parameter+" from personalinformation where userID="+userID;
 			
 			rs = DB.readFromDB(query, con);
-			System.out.println(query);
+			//System.out.println(query);
 			while (rs.next()) {
 				
 				ParameterValue=rs.getString(parameter);	
@@ -49,7 +49,7 @@ public class ViewProfileService {
 			query="select "+parameter+" from logindetails where userID="+userID;
 			
 			rs = DB.readFromDB(query, con);
-			System.out.println(query);
+			//System.out.println(query);
 			while (rs.next()) {
 				
 				ParameterValue=rs.getString(parameter);	
@@ -77,7 +77,7 @@ public boolean getFriendshipStatus(int userID,int friendUserID) {
 			query="select count(*) as status from friendDetails where userID="+userID+" AND friendUserID="+friendUserID;
 			
 			rs = DB.readFromDB(query, con);
-			System.out.println(query);
+			//System.out.println(query);
 			while (rs.next()) {
 				
 				count=rs.getInt("status");	
@@ -108,7 +108,7 @@ public boolean getFriendshipStatus(int userID,int friendUserID) {
 			query="select value from interests i,studentinterests si where si.status='A' AND si.userID="+userID+" AND si.interestID=i.sno";
 			
 			rs = DB.readFromDB(query, con);
-			System.out.println(query);
+			//System.out.println(query);
 			while (rs.next()) {
 				interests.add(rs.getString("value"));
 				

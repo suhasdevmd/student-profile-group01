@@ -328,12 +328,7 @@ public class InterestService {
 		return 0;
 	}
 
-	public static ArrayList<Interests> getInterestsAndID(int userID) { // ------------------------------------Ashwin
-																		// edit
-																		// :
-																		// start
-		System.out
-				.println("--------------------------------------------------------- here !!!!");
+	public static ArrayList<Interests> getInterestsAndID(int userID) { 
 		ArrayList<Interests> interests = new ArrayList<Interests>();
 		Connection con;
 		ResultSet rs;
@@ -343,29 +338,21 @@ public class InterestService {
 			con = DB.getConnection();
 			query = "select i.value, i.sno from studentinterests si, interests i where si.interestID = i.sno and si.userID="
 					+ userID + " and si.status ='A'";
-			System.out.println(query);
 			rs = DB.readFromDB(query, con);
 			while (rs.next()) {
-				System.out
-						.println("-------------------------------------inside the while loop !!!");
 				Interests interest = new Interests();
 				String temp1 = rs.getString("value");
 				interest.setValue(temp1);
-				System.out.println(temp1);
 
 				int temp2 = rs.getInt("sno");
 				interest.setInterestID(temp2);
-				System.out.println(temp2);
 				interests.add(interest);
 			}
 			// close the connection
 			con.close();
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 
-		System.out
-				.println("--------------------------------------------------------- here !!!!");
 		return interests;
 	}
 

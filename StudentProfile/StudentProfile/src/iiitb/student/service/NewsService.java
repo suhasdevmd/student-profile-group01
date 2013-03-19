@@ -21,7 +21,6 @@ public class NewsService {
 			con = DB.getConnection();
 			query = "SELECT * FROM news";
 			rs = DB.readFromDB(query, con);
-			System.out.println(query);
 			while (rs.next()) {
 				News news = new News();
 				news.setNewsID(rs.getInt("newsID"));

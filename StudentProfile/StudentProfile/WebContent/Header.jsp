@@ -93,19 +93,12 @@
 					</li>
 				</ul>
 			</s:elseif>
+			<s:else>
+			<ul>
+				<li><a href="Login.jsp">Home</a>	
+			</ul>
+			</s:else>
 		</form>
-		<!-- <ul id="nav">
-		<li><a href="#">About Us</a>
-		</li>
-		<li><a href="#">Our Products</a>
-		</li>
-		<li><a href="#">FAQs</a>
-		</li>
-		<li><a href="#">Contact</a>
-		</li>
-		<li><a href="#">Login</a>
-		</li>
-	</ul> -->
 	</div>
 
 </body>

@@ -37,12 +37,13 @@ public class SubjectAction extends ActionSupport{
 
 
 	public String execute(){
+		System.out.println("Entering Class:SubjectAction :: Method:execute\n-------------------------------------");
 		session=ActionContext.getContext().getSession();
 
-		System.out.println("sts : --> "+status);
+		//System.out.println("sts : --> "+status);
 		
 		if(status.equalsIgnoreCase("Enrol")){
-			subject=ss.getEnrolledSubjects("Y");
+			subject=ss.getEnrolledSubjects(Integer.parseInt(session.get("userID").toString()),"Y");
 		}else{
 			subject=ss.getSubjects(Integer.parseInt(session.get("userID").toString()));
 		}

@@ -13,6 +13,7 @@ public class LoginService {
 	String query;
 	LoginDetails loginDetails = new LoginDetails();
 
+	/* get Login Details for the given username */
 	public LoginDetails getLoginDetails(String username) {
 		try {
 			con = DB.getConnection();

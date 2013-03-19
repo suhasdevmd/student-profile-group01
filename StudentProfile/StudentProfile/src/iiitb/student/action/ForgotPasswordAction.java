@@ -38,6 +38,7 @@ public class ForgotPasswordAction extends ActionSupport{
 	}
 
 	public String execute() {
+		System.out.println("Entering Class:ForgotPasswordAction :: Method:execute\n-------------------------------------");
 		ArrayList<Integer> temp = ForgotPasswordService.checkMultipleEntries(userName, Question, Answer);	
 		int val = temp.get(0);
 		int userID = temp.get(1);

@@ -17,6 +17,7 @@ public class FriendsAction extends ActionSupport {
 	private Map<String,Object> session;
 	
 	public String execute(){
+		System.out.println("Entering Class:FriendsAction :: Method:execute\n-------------------------------------");
 		session=ActionContext.getContext().getSession();
 		this.setUserID(Integer.parseInt(session.get("userID").toString()));
 		

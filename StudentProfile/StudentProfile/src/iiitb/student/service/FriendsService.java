@@ -24,7 +24,7 @@ public class FriendsService {
 			"WHERE fd.userID = " +userID+
 			" AND fd.friendUserID=pi.userID";
 			rs = DB.readFromDB(query, con);
-			System.out.println(query);
+			//System.out.println(query);
 			while (rs.next()) {
 				FriendDetails friend = new FriendDetails();
 				friend.setFriendID(rs.getInt("friendID"));
@@ -56,14 +56,14 @@ public class FriendsService {
 			con = DB.getConnection();
 			query = "select userID from personalinformation where rollNumber='"+roll+"';";
 			rs = DB.readFromDB(query, con);
-			System.out.println(query);
+			//System.out.println(query);
 			
 			while (rs.next()) {
 				friendID=rs.getString("userID");
 			}
 
 
-			System.out.println("id: "+friendID);
+			//System.out.println("id: "+friendID);
 
 			query1= "insert into frienddetails(userID,friendUserID) values ('"+userID+"','"+friendID+"');";
 			query2= "insert into frienddetails(userID,friendUserID) values ('"+friendID+"','"+userID+"');";
@@ -113,14 +113,14 @@ public class FriendsService {
 			con = DB.getConnection();
 			query = "select userID from personalinformation where rollNumber='"+roll+"';";
 			rs = DB.readFromDB(query, con);
-			System.out.println(query);
+			//System.out.println(query);
 			
 			while (rs.next()) {
 				friendID=rs.getString("userID");
 			}
 
 
-			System.out.println("id: "+friendID);
+			//System.out.println("id: "+friendID);
 
 			query1= "delete from frienddetails where userID='"+userID+"' and friendUserID='"+friendID+"';";
 			query2= "delete from frienddetails where userID='"+friendID+"' and friendUserID='"+userID+"';";

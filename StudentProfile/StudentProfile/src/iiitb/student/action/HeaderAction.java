@@ -9,8 +9,8 @@ import java.util.Map;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class HeaderAction extends ActionSupport{
-	
+public class HeaderAction extends ActionSupport {
+
 	private String function;
 	private ArrayList<Integer> semesterList;
 	private ArrayList<String> subjectList;
@@ -18,7 +18,7 @@ public class HeaderAction extends ActionSupport{
 	private int semester;
 	private String subject;
 	private double cgpa;
-	
+
 	public double getCgpa() {
 		return cgpa;
 	}
@@ -42,7 +42,7 @@ public class HeaderAction extends ActionSupport{
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
-	
+
 	public ArrayList<GradeAggregate> getAggregateList() {
 		return aggregateList;
 	}
@@ -55,58 +55,46 @@ public class HeaderAction extends ActionSupport{
 		return semesterList;
 	}
 
-
 	public void setSemesterList(ArrayList<Integer> semesterList) {
 		this.semesterList = semesterList;
 	}
-
 
 	public ArrayList<String> getSubjectList() {
 		return subjectList;
 	}
 
-
 	public void setSubjectList(ArrayList<String> subjectList) {
 		this.subjectList = subjectList;
 	}
-
 
 	public void setFunction(String function) {
 		this.function = function;
 	}
 
-
 	public String getFunction() {
 		return function;
 	}
 
-	
-	public String execute(){
-		String val="";
-		Map session=ActionContext.getContext().getSession();
-		int userID=Integer.parseInt(session.get("userID").toString());
-		
-		
-		if(function.equalsIgnoreCase("Grades")){
-			val = "Grades";
-			System.out.println("val = "+val);
-			subjectList = new ArrayList<String>();
+	public String execute() {
+		System.out
+				.println("Entering Class:HeaderAction :: Method:execute\n-------------------------------------");
+		String val = "";
+		Map session = ActionContext.getContext().getSession();
+		int userID = Integer.parseInt(session.get("userID").toString());
 
-			semesterList = GradesService.getSemesterList("",userID);
-			
-			
-			/*if(semester == -1 && subject.equalsIgnoreCase("-1")){*/
-				aggregateList = GradesService.computeAverage(userID);
-				cgpa = GradesService.getCGPA(aggregateList);
-			//}
-			
-				
-				subjectList.add("SelectSubject");
-		
-		}	
-		System.out.println("val = "+val);
+		if (function.equalsIgnoreCase("Grades")) {
+			val = "Grades";
+
+			subjectList = new ArrayList<String>();
+			semesterList = GradesService.getSemesterList("", userID);
+
+			aggregateList = GradesService.computeAverage(userID);
+			cgpa = GradesService.getCGPA(aggregateList);
+
+			subjectList.add("SelectSubject");
+
+		}
 		return val;
 	}
-
 
 }

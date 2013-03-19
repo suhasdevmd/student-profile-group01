@@ -92,15 +92,11 @@ public class GradesAction extends ActionSupport {
 	}
 
 	public String execute(){
+		System.out
+		.println("Entering Class:GradesAction :: Method:execute\n-------------------------------------");
 		Map<String,Object> session = ActionContext.getContext().getSession();
 		
-		System.out.println("sem =" + semester);
-		System.out.println("subject = "+subject);
-
-		/*
-		 * userID has been hard coded
-		 * has to be changed later 
-		 * */
+		
 		int userID = Integer.parseInt(session.get("userID").toString());
 		semesterList = GradesService.getSemesterList("",userID);
 		subjectList = GradesService.getSubjectsList("",userID,semPassedFromJS);
@@ -116,13 +112,10 @@ public class GradesAction extends ActionSupport {
 		}
 		else{
 			
-			System.out.println("Both are selected");
-			
 			semesterList = GradesService.getSemesterList("",userID);
 			subjectList = GradesService.getSubjectsList("",userID,semester);
 			gradesList = GradesService.getGradesOfSpecificSemesterAndSubject(semester, subject, userID);
-			
-			
+				
 		}
 		
 		return "success";
@@ -131,7 +124,7 @@ public class GradesAction extends ActionSupport {
 	
 	public String assignGrades(){
 		this.setGradesList(GradesService.getEnrolledRows());
-		System.out.println("I AM HEREEEEEEE");
+		
 		
 		if(this.getType().equalsIgnoreCase("edit")){
 			 gradeValues=new ArrayList<String>();
@@ -145,17 +138,17 @@ public class GradesAction extends ActionSupport {
 			this.gradeValues.add("C");
 			this.gradeValues.add("D");
 			this.gradeValues.add("F");
-			System.out.println("editing for enrollmentID="+this.getEnrollmentID());
+	
 			this.setGradesList(GradesService.getEnrolledRows());
 			return "success";
 		}
 		else if(this.getType().equalsIgnoreCase("search")){
-			System.out.println("searching for rollnumber="+this.getRollNumber());
+	
 			this.setGradesList(GradesService.searchEnrolledRows(this.getRollNumber()));
 			return "success";
 		}
 		else if(this.getType().equalsIgnoreCase("update")){
-			System.out.println("updating enrollmentID="+this.getEnrollmentID()+" and grade="+this.getNewGrade());
+	
 			GradesService.updateGrade(this.getEnrollmentID(), this.getNewGrade());
 			this.setGradesList(GradesService.getEnrolledRows());
 			return "success";

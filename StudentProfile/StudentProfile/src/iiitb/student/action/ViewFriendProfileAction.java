@@ -91,7 +91,7 @@ public class ViewFriendProfileAction extends ActionSupport {
 	}
 
 	public String execute() {
-
+		System.out.println("Entering Class:ViewFriendProfileAction :: Method:execute\n-------------------------------------");
 		session = ActionContext.getContext().getSession();
 		this.setUserID(Integer.parseInt(session.get("userID").toString()));
 		// sample -- > business logic should be in service class

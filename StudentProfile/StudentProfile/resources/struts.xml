@@ -13,18 +13,8 @@
 			<result-type name="tiles"
 				class="org.apache.struts2.views.tiles.TilesResult" />
 		</result-types>
-
-		<action name="welcome" method="execute"
-			class="iiitb.student.action.WelcomeAction">
-			<result name="studentSuccess" type="tiles">/welcomeStudent.tiles
-			</result>
-			<result name="facultySuccess" type="tiles">/welcomeStudent.tiles
-			</result>
-			<result name="adminSuccess" type="tiles">/welcomeAdmin.tiles
-			</result>
-			<result name="error" type="tiles">/error.tiles</result>
-		</action>
-
+		
+		<!-- Login action begins-->
 		<action name="login" method="execute" class="iiitb.student.action.LoginAction">
 			<result name="input">/Login.jsp</result>
 			<result name="studentSuccess" type="tiles">/welcomeStudent.tiles
@@ -37,25 +27,46 @@
 			</result>	
 			<result name="error" type="tiles">/error.tiles</result>
 		</action>
+		<!-- Login action ends -->
 		
+		<!-- forgotpassword action begins -->
 		<action name="forgotpassword" method="execute"
 			class="iiitb.student.action.ForgotPasswordAction">
 			<result name="success" type="tiles">/ForgotPassword.tiles</result>
 		</action>
+		<!-- forgotpassword action ends -->
 
+		<!-- logout action begins -->
 		<action name="logout" class="iiitb.student.action.LogoutAction">
 			<result name="logout">/Login.jsp</result>
 		</action>
+		<!-- logout action begins -->
+	
+		<!-- Different Home page redirection based on roles -->
+		<action name="welcome" method="execute"
+			class="iiitb.student.action.WelcomeAction">
+			<result name="studentSuccess" type="tiles">/welcomeStudent.tiles
+			</result>
+			<result name="facultySuccess" type="tiles">/welcomeStudent.tiles
+			</result>
+			<result name="adminSuccess" type="tiles">/welcomeAdmin.tiles
+			</result>
+			<result name="error" type="tiles">/error.tiles</result>
+		</action>
+		<!-- Homepage redirection ends -->
+		
+		<!-- Grade action begins -->
+		<action name="headergrades" method="execute"
+			class="iiitb.student.action.HeaderAction">
+			<result name="Grades" type="tiles">/headergrades.tiles</result>
+		</action>
+		
+		<!-- Grade action ends -->
+		
 
 		<action name="subject" method="execute"
 			class="iiitb.student.action.SubjectAction">
 			<result name="success" type="tiles">/subjects.tiles</result>
-		</action>
-
-
-		<action name="headergrades" method="execute"
-			class="iiitb.student.action.HeaderAction">
-			<result name="Grades" type="tiles">/headergrades.tiles</result>
 		</action>
 
 		<action name="search" method="execute"

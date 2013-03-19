@@ -27,12 +27,6 @@
 <body>
 	<s:form id="myform" action="forgotpassword.action" method="POST">
 		<table>
-			<%-- <tr>
-				<td><s:label>Enter Rollnumber</s:label>
-				</td>
-				<td><s:textfield name="rollnum"></s:textfield>
-				</td>
-			</tr> --%>
 			<tr>
 				<td><s:label>Enter Username</s:label>
 				</td>

@@ -29,7 +29,7 @@ public class LoginAction extends ActionSupport {
 	private LoginDetails loginDetails;
 	private PersonalInformation personalInfo;
 
-	public void validate() { // ----------------------- ashwin edit : start
+	public void validate() { 
 		if (!commandButton.equalsIgnoreCase("Forgot Password")) {
 			if (StringUtils.isNullOrEmpty(username))
 				addFieldError("username", "Username cannot be empty");
@@ -44,18 +44,17 @@ public class LoginAction extends ActionSupport {
 	 */
 
 	public String execute() {
+		System.out.println("Entering Class:LoginAction :: Method:execute\n-------------------------------------");
 		session = ActionContext.getContext().getSession();
 		int userID = 0;
-		System.out.println("execute " + this.getCommandButton());
-		if (commandButton.equalsIgnoreCase("Forgot Password")) { // ------------------------------------
-																	// Ashwin
-																	// edit :
-			session.put("login", "true"); // starts
-			System.out.println("inside forgot pass");
-
+		
+		/* Forgot Password */
+		if (commandButton.equalsIgnoreCase("Forgot Password")) { 
+			session.put("login", "true"); 
 			return "forgotpass";
-		} // --------------------------------------------------- end
+		}
 
+		/* Login */
 		if (this.getCommandButton().equalsIgnoreCase("Login")) {
 			loginDetails = (new LoginService()).getLoginDetails(username);
 
@@ -65,52 +64,51 @@ public class LoginAction extends ActionSupport {
 					&& loginDetails.getStatus().equals("A")) {
 				username = loginDetails.getUserName();
 				userID = loginDetails.getUserID();
+				String role = loginDetails.getRole();
 
-				session.put("userID", userID);
-				session.put("userName", this.getUsername());
+				
+				/* get personal information */
+				this.setPersonalInfo((new LoginService())
+						.getPersonalInformation(userID));
+				
+				/* Fetch newslist */
 				newsList = newsService.getNews();
-				System.out.println("login newslist size" + newsList.size());
 				if (newsList.size() > 0)
 					session.put("newsList", newsList);
 				else
 					session.put("newsList", null);
-				session.put("login", "true");
-
-				InterestsList = InterestService.getInterestsAndID(userID); // ashwin
-																			// edit
-																			// -----------------
-																			// start
-				for (int i = 0; i < InterestsList.size(); i++) {
-					System.out.println("value ="
-							+ InterestsList.get(i).getValue());
-					System.out.println("value ="
-							+ InterestsList.get(i).getInterestID());
-				}
+				
+				
+				/* Fetch interests as per the userID */
+				InterestsList = InterestService.getInterestsAndID(userID); 
 				if (InterestsList.size() > 0)
 					session.put("InterestsList", InterestsList);
 				else
 					session.put("InterestsList", null);
-				String role = loginDetails.getRole();
 
+				
+				/* Load into session */
+				session.put("login", "true");
+				session.put("userID", userID);
+				session.put("userName", this.getUsername());
 				session.put("role", role);
-				this.setPersonalInfo((new LoginService())
-						.getPersonalInformation(userID));
-
 				session.put("photograph", this.getPersonalInfo()
 						.getPhotograph());
-
+				
+				
+				/* return as per the student role */
 				if (role.equals("student")) {
 					session.put("rollNumber",
 							(this.getPersonalInfo().getRollNumber()));
-					return "studentSuccess"; // TODO : add to struts.xml
+					return "studentSuccess"; 
 				}
 				if (role.equals("admin")) {
-					return "adminSuccess"; // TODO : add to struts.xml
+					return "adminSuccess"; 
 				}
 				if (role.equals("faculty")) {
-					return "facultySuccess"; // TODO : add to struts.xml
+					return "facultySuccess"; 
 				}
-				return "error"; // TODO : can handle this in a better way
+				return "error"; 
 			} else {
 				addActionError(getText("error.login"));
 				username = "";
@@ -143,12 +141,7 @@ public class LoginAction extends ActionSupport {
 		this.password = password;
 	}
 
-	/*
-	 * public ArrayList<Subjects> getSubject() { return subject; }
-	 * 
-	 * public void setSubject(ArrayList<Subjects> subject) { this.subject =
-	 * subject; }
-	 */
+
 
 	public ArrayList<News> getNewsList() {
 		return newsList;

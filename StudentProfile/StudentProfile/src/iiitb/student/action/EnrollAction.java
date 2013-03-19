@@ -59,7 +59,7 @@ private ArrayList<Integer> semesterList;
 	}
 
 	public String execute(){
-
+		System.out.println("Entering Class:EnrollAction :: Method:execute\n-------------------------------------");
 		Map<String,Object> session = null;
 		String userID ="";
 		int sem  = 0 ;

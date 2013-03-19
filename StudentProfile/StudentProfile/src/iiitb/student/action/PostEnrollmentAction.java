@@ -87,11 +87,12 @@ public void setDueDate(String dueDate) {
 
 
 public String execute(){
-	     Map<String,Object> session = (Map<String, Object>) ActionContext.getContext().getSession() ;
+	System.out.println("Entering Class:PostEnrollmentAction :: Method:execute\n-------------------------------------");
+	Map<String,Object> session = (Map<String, Object>) ActionContext.getContext().getSession() ;
 	    this.userID = (Integer)session.get("userID");
 		this.grade = '-';  //to be given by admin
 		this.status = 'Y'; // indicates he has enrolled 
-		System.out.println("------Subject in PostEnroll--------- " + this.subject);
+		//System.out.println("------Subject in PostEnroll--------- " + this.subject);
 		
 		/*ProcessSubject is called because the multiple values selected from the checkbox
 		 is stored in 'subject' value as multiple strings
@@ -99,9 +100,9 @@ public String execute(){
 		*/
 		subjectlist = this.ProcessSubject();
 		
-		System.out.println("list size "+subjectlist.length);
+		//System.out.println("list size "+subjectlist.length);
 		
-			System.out.println("values "+subject);
+			//System.out.println("values "+subject);
 	
 		
 		//insert enrolled students into DB
@@ -139,7 +140,7 @@ public String execute(){
 			  ex.printStackTrace();
 		  }
      	if(currDate.after(dueDate)){
-     		System.out.println("currDate is after dueDate");
+     		//System.out.println("currDate is after dueDate");
      		return true;
      	}
 

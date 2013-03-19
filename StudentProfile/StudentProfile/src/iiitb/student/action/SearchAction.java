@@ -37,11 +37,11 @@ public class SearchAction extends ActionSupport {
 	}
 
 	public String execute() {
-		
+		System.out.println("Entering Class:SearchAction :: Method:execute\n-------------------------------------");
 		Map<String,Object> session=ActionContext.getContext().getSession();
 		
 		PersonalInformation friend = new PersonalInformation();
-		System.out.println(this.getRollNo());
+		//System.out.println(this.getRollNo());
 		friend = SearchService.getFriend("where rollNumber='"
 				+ this.getRollNo()+"'");
 		if (friend == null) {
@@ -72,7 +72,7 @@ public class SearchAction extends ActionSupport {
 		
 		if(val){
 			friendStatus=true;
-			System.out.println("is a friend");
+			//System.out.println("is a friend");
 		}
 			
 		return "success";

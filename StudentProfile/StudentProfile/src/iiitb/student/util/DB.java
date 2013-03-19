@@ -368,7 +368,7 @@ public class DB {
 
 	public static ResultSet readFromBmtcDB(String query) {
 		Connection connection = null;
-		System.out.println("in readFromBMTCDB with query:\n" + query);
+		//System.out.println("in readFromBMTCDB with query:\n" + query);
 		connection = getConnection();
 		return readFromDB(query, connection);
 	}

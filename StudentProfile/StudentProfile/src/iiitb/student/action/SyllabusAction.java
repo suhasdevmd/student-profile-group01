@@ -26,7 +26,7 @@ public class SyllabusAction {
 
 	
 	public String execute(){
-		System.out.println("In execute of SyllabusAction :subjectCode " + this.Subj);
+		System.out.println("Entering Class:SyllabusAction :: Method:execute\n-------------------------------------");
 		SyllabusService syllabus = new SyllabusService();
 		this.subjectName = syllabus.getSubjectName(Subj);
 		this.syllabus = syllabus.getSyllabus(Subj);
