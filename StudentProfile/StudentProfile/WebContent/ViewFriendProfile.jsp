@@ -15,7 +15,7 @@
 	<s:form action="addfriend" method="post">
 		<table align="center">
 			<tr class="success">
-				<td><img src="${photograph}" alt="${photograph}'s photo" height="100" width="100"/>
+				<td><img src="images/<s:property value="photograph"/>" alt="${photograph}'s photo" height="100" width="100"/>
 				</td>
 				<td><s:property value="RollNo" />
 				<s:hidden name="RollNo"></s:hidden>
