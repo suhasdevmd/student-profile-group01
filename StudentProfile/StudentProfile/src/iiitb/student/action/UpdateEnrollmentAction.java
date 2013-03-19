@@ -113,12 +113,13 @@ public int getSemester() {
 
 
 	public String execute(){
+		System.out.println("Entering Class:UpdateEnrollmentAction :: Method:execute\n-------------------------------------");
 		
 		if(!upd_id.equalsIgnoreCase("") && !upd_id.equalsIgnoreCase(null)){
 			
 			
-			System.out.println("Suhas  --> updating "+upd_id);
-			System.out.println("size of the array + "+upd_id);
+			//System.out.println("Suhas  --> updating "+upd_id);
+			//System.out.println("size of the array + "+upd_id);
 			
 			
 			en=AddEnrollmentService.getRulewithID(upd_id);

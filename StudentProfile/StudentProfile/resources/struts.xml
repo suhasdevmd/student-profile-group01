@@ -78,8 +78,6 @@
 
 		<!-- Syllabus Enrollment actions begin -->
 
-		
-		
 		<action name="syllabus" method="execute"  class="iiitb.student.action.SyllabusAction">
 			<result name="success" type="tiles">/syllabus.tiles</result>
 		</action>
@@ -91,12 +89,11 @@
 		<action name="postenrollment" method="execute" class="iiitb.student.action.PostEnrollmentAction">
 			<result name="success" type="tiles">/enrollmentsuccessfull.tiles</result><result name="error" type="tiles">/error.tiles</result>
 		</action>
-		
-
 		<!-- Syllabus Enrollment actions end -->
 
-		<!-- Profile actions begin -->
 
+
+		<!-- Profile actions begin -->
 		<action name="ViewProfile" method="execute"
 			class="iiitb.student.action.ViewProfileAction">
 			<result name="success" type="tiles">/ViewProfile.tiles</result>
@@ -118,18 +115,21 @@
 				<param name="actionName">EditProfile</param>
 			</result>
 		</action>
-
 		<!-- Profile actions end -->
+		
+		
 
 		<action name="grades" method="execute"
 			class="iiitb.student.action.GradesAction">
 			<result name="success" type="tiles">/headergrades.tiles</result>
 		</action>
+		
 
 		<action name="friends" method="execute"
 			class="iiitb.student.action.FriendsAction">
 			<result name="success" type="tiles">/myfriends.tiles</result>
 		</action>
+		
 		
 		<action name="viewFriends" method="execute"
 			class="iiitb.student.action.ViewFriendProfileAction">

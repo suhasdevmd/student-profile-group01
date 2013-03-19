@@ -24,7 +24,7 @@ public class AddEnrollmentService {
 		try {
 			con = DB.getConnection();
 			query= "insert into enrollmentrules(semester,dueDate) values ("+semester+",'"+dueDate+"');";
-			System.out.println(query);
+			//System.out.println(query);
 
 			status  = DB.update(con,query);
 			//System.out.println(query);
@@ -119,7 +119,7 @@ public class AddEnrollmentService {
 				query = "select facultyID from facultydetails where firstname='"+names[0]+"';";
 			}
 			rs = DB.readFromDB(query, con);
-			System.out.println(query);
+			//System.out.println(query);
 
 
 			while(rs.next()){
@@ -158,7 +158,7 @@ public class AddEnrollmentService {
 			con = DB.getConnection();
 			query = "select subjectID from subjectdetails where subjectName='"+name+"';";
 			rs = DB.readFromDB(query, con);
-			System.out.println(query);
+			//System.out.println(query);
 
 
 			while(rs.next()){
@@ -200,7 +200,7 @@ public class AddEnrollmentService {
 			con = DB.getConnection();
 			query = "select subjectName from subjectdetails";
 			rs = DB.readFromDB(query, con);
-			System.out.println(query);
+			//System.out.println(query);
 
 
 			while(rs.next()){
@@ -242,7 +242,7 @@ public class AddEnrollmentService {
 			con = DB.getConnection();
 			query = "select firstName,lastName from facultydetails";
 			rs = DB.readFromDB(query, con);
-			System.out.println(query);
+			//System.out.println(query);
 
 
 			while(rs.next()){
@@ -283,7 +283,7 @@ public class AddEnrollmentService {
 			con = DB.getConnection();
 			query = "select * from enrollmentrules";
 			rs = DB.readFromDB(query, con);
-			System.out.println(query);
+			//System.out.println(query);
 
 
 			while(rs.next()){
@@ -335,7 +335,7 @@ public class AddEnrollmentService {
 			con = DB.getConnection();
 			query = "select subjectName from subjectdetails where subjectID='"+id+"';";
 			rs = DB.readFromDB(query, con);
-			System.out.println(query);
+			//System.out.println(query);
 
 
 			while(rs.next()){
@@ -377,7 +377,7 @@ public class AddEnrollmentService {
 			con = DB.getConnection();
 			query = "select firstName,lastName from facultydetails where facultyID='"+id+"';";
 			rs = DB.readFromDB(query, con);
-			System.out.println(query);
+			//System.out.println(query);
 
 
 			while(rs.next()){
@@ -418,7 +418,7 @@ public class AddEnrollmentService {
 			con = DB.getConnection();
 			query = "delete from enrollmentrules where ruleID='"+id+"';";
 			st = DB.update(con, query);
-			System.out.println(query);
+			//System.out.println(query);
 
 
 			return st;
@@ -469,7 +469,7 @@ public class AddEnrollmentService {
 			" where ruleID = '" + ruleID+"';";
 
 
-		System.out.println("000 - >> "+updateSQL);
+		//System.out.println("000 - >> "+updateSQL);
 
 		return DB.update(updateSQL);
 
@@ -490,7 +490,7 @@ public class AddEnrollmentService {
 			con = DB.getConnection();
 			query = "select * from enrollmentrules where ruleID='"+id+"';";
 			rs = DB.readFromDB(query, con);
-			System.out.println(query);
+			//System.out.println(query);
 
 
 			while(rs.next()){

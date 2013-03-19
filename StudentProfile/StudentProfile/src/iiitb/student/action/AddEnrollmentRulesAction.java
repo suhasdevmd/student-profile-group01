@@ -101,14 +101,14 @@ public class AddEnrollmentRulesAction extends ActionSupport{
 		
 		
 		
-		System.out.println("----> "+addEnroll);
+		System.out.println("Entering Class:AddEnrollmentRulesAction :: Method:execute\n-------------------------------------");
 		
 		
 		if(addEnroll.equalsIgnoreCase(("add"))){
 			// display the current enrollment table
-			System.out.println("add");
+			
 			enrollList=AddEnrollmentService.getEnrolList();		
-			System.out.println("workin");
+			
 			return "addenrollhome";
 		}
 		
@@ -116,7 +116,7 @@ public class AddEnrollmentRulesAction extends ActionSupport{
 		
 		if(addEnroll.equalsIgnoreCase(("addnew"))){
 			
-			System.out.println("addnew");
+			//System.out.println("addnew");
 			/* retrieve the subj list 
 			
 			
